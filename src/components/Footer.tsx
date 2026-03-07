@@ -1,5 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { MapPin, Mail, Linkedin } from "lucide-react";
+import { MapPin, Mail, Linkedin, Instagram } from "lucide-react";
 import logoImg from "@/assets/Logo.png";
 
 export default function Footer() {
@@ -53,6 +53,15 @@ export default function Footer() {
                 data-interactive
               >
                 <Linkedin className="w-4 h-4 text-foreground" />
+              </a>
+              <a
+                href="https://www.instagram.com/mr.ares259?igsh=MWxxeGdrYmVzanE0MQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-colors"
+                data-interactive
+              >
+                <Instagram className="w-4 h-4 text-foreground" />
               </a>
             </div>
           </div>
