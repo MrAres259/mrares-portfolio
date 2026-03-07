@@ -7,7 +7,7 @@ export default function ContactSection() {
   const items = [
     { icon: MapPin, label: t.location, href: null },
     { icon: Mail, label: t.email, href: `mailto:${t.email}` },
-    { icon: Linkedin, label: t.linkedin, href: "https://www.linkedin.com/in/rigel-santos-2411b4232/" },
+    { icon: Linkedin, label: t.linkedin, href: "https://www.linkedin.com/in/miguel-rigel-santos-carpio-202a91172" },
   ];
 
   return (

@@ -1,15 +1,47 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { ArrowRight } from "lucide-react";
 
 function InteractiveText({ text }: { text: string }) {
-  const containerRef = useRef<HTMLSpanElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handler);
+    return () => window.removeEventListener("mousemove", handler);
+  }, []);
 
   return (
-    <span ref={containerRef} className="inline">
+    <span className="inline">
       {text.split("").map((char, i) => (
-        <span key={i} className="inline-block">{char === " " ? "\u00A0" : char}</span>
+        <InteractiveLetter key={i} char={char} mousePos={mousePos} />
       ))}
+    </span>
+  );
+}
+
+function InteractiveLetter({ char, mousePos }: { char: string; mousePos: { x: number; y: number } }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dist = Math.sqrt((mousePos.x - cx) ** 2 + (mousePos.y - cy) ** 2);
+    const maxDist = 120;
+    const s = dist < maxDist ? 1 + (1 - dist / maxDist) * 0.4 : 1;
+    setScale(s);
+  }, [mousePos]);
+
+  return (
+    <span
+      ref={ref}
+      className="inline-block transition-transform duration-150 ease-out"
+      style={{ transform: `scale(${scale})`, transformOrigin: "center bottom" }}
+    >
+      {char === " " ? "\u00A0" : char}
     </span>
   );
 }

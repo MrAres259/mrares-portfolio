@@ -7,6 +7,7 @@ import EducationSection from "@/components/EducationSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
@@ -21,9 +22,7 @@ export default function Index() {
         <CertificationsSection />
         <ContactSection />
       </main>
-      <footer className="relative z-10 text-center py-8 text-muted-foreground text-sm">
-        © {new Date().getFullYear()} Rigel Santos
-      </footer>
+      <Footer />
     </LanguageProvider>
   );
 }
