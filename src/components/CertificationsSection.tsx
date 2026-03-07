@@ -21,12 +21,12 @@ interface Cert {
 }
 
 const certs: Cert[] = [
-  { title: "Google Cloud Essentials", issuer: "Google Cloud", date: "2024", image: googleCloud, url: "#", size: "large" },
-  { title: "Cisco Networking Basics", issuer: "Cisco", date: "2024", image: netBasics, url: "#", size: "large" },
-  { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/1f8e08c0-f475-42c2-81af-71147c4b84a0/public_url", size: "large" },
-  { title: "Google UX Design Certificate", issuer: "Coursera", date: "Mar 2023", image: googleUx, url: "https://www.credly.com/badges/e08f75e1-6e09-49b6-a65c-1cae17ec0bb8/public_url", size: "small" },
-  { title: "Cisco Learn-A-Thon 2025", issuer: "Cisco", date: "2025", image: netAthon, url: "#", size: "small" },
-  { title: "Git & GitHub Essentials", issuer: "Microsoft", date: "2024", image: gitGithub, url: "#", size: "small" },
+  { title: "Google Cloud Essentials", issuer: "Google Cloud", date: "2024", image: googleCloud, url: "https://www.skills.google/public_profiles/423a0a4c-eb10-4534-93b6-ab302b738f23/badges/2086098", size: "large" },
+  { title: "Cisco Networking Basics", issuer: "Cisco", date: "2024", image: netBasics, url: "https://www.credly.com/badges/40cdeeb1-2ff9-4e9b-853c-24b11a001c9e", size: "large" },
+  { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/0d8c4c4f-bb48-4310-be03-be1b26b8d6ca", size: "large" },
+  { title: "Google UX Design Certificate", issuer: "Coursera", date: "Mar 2023", image: googleUx, url: "https://www.credly.com/badges/53475eec-f46d-44d5-b9bf-f61fff271c29", size: "small" },
+  { title: "Cisco Learn-A-Thon 2025", issuer: "Cisco", date: "2025", image: netAthon, url: "https://www.credly.com/badges/40cdeeb1-2ff9-4e9b-853c-24b11a001c9e", size: "small" },
+  { title: "Git & GitHub Essentials", issuer: "Microsoft", date: "2024", image: gitGithub, url: "https://www.credly.com/badges/58c004e9-65fc-4127-9da0-36bd323fa082", size: "small" },
 ];
 
 function LargeCard({ cert, delay, visible }: { cert: Cert; delay: number; visible: boolean }) {
