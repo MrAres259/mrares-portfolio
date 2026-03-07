@@ -42,7 +42,7 @@ export default function CustomCursor() {
       />
       <div
         ref={glowRef}
-        className="fixed top-0 left-0 w-[150px] h-[150px] rounded-full pointer-events-none z-[9998] transition-transform duration-300 ease-out"
+        className="fixed top-0 left-0 w-[200px] h-[200px] rounded-full pointer-events-none z-[9998] transition-transform duration-300 ease-out"
         style={{
           background: "radial-gradient(circle, hsl(190 37% 52% / 0.08) 0%, transparent 70%)",
         }}
