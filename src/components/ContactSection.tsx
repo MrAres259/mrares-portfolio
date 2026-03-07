@@ -1,5 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { MapPin, Mail, Linkedin } from "lucide-react";
+import { MapPin, Mail, Linkedin, Instagram } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
 
@@ -12,6 +12,7 @@ export default function ContactSection() {
     { icon: MapPin, label: t.location, href: null },
     { icon: Mail, label: t.email, href: `mailto:${t.email}` },
     { icon: Linkedin, label: t.linkedin, href: "https://www.linkedin.com/in/miguel-rigel-santos-carpio-202a91172" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mr.ares259?igsh=MWxxeGdrYmVzanE0MQ==" },
   ];
 
   return (
@@ -27,7 +28,7 @@ export default function ContactSection() {
         >
           {t.contact}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {items.map((item, i) => {
             const Wrapper = item.href ? "a" : "div";
             const extraProps = item.href ? { href: item.href, target: "_blank", rel: "noopener noreferrer" } : {};
