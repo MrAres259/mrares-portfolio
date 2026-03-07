@@ -1,5 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { MapPin, Mail, Linkedin } from "lucide-react";
+import { MapPin, Mail, Linkedin, Instagram } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
 
