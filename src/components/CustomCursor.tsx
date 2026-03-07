@@ -13,7 +13,7 @@ export default function CustomCursor() {
         cursorRef.current.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
       }
       if (glowRef.current) {
-        glowRef.current.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
+        glowRef.current.style.transform = `translate(${e.clientX - 100}px, ${e.clientY - 100}px)`;
       }
     };
 
