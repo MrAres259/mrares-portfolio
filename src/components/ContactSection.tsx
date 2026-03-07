@@ -12,6 +12,7 @@ export default function ContactSection() {
     { icon: MapPin, label: t.location, href: null },
     { icon: Mail, label: t.email, href: `mailto:${t.email}` },
     { icon: Linkedin, label: t.linkedin, href: "https://www.linkedin.com/in/miguel-rigel-santos-carpio-202a91172" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/mr.ares259?igsh=MWxxeGdrYmVzanE0MQ==" },
   ];
 
   return (
