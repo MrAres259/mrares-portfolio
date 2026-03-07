@@ -1,6 +1,7 @@
 import { useRef, useCallback, useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { ArrowRight } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 function InteractiveText({ text }: { text: string }) {
   const containerRef = useRef<HTMLSpanElement>(null);
@@ -47,7 +48,35 @@ function InteractiveText({ text }: { text: string }) {
   );
 }
 
-function MagneticCard({ href, label }: { href: string; label: string }) {
+function TypingText({ text }: { text: string }) {
+  const [displayed, setDisplayed] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) clearInterval(interval);
+    }, 55);
+    return () => clearInterval(interval);
+  }, [text]);
+
+  useEffect(() => {
+    const blink = setInterval(() => setShowCursor((c) => !c), 530);
+    return () => clearInterval(blink);
+  }, []);
+
+  return (
+    <span>
+      {displayed}
+      <span className="text-primary" style={{ opacity: showCursor ? 1 : 0 }}>|</span>
+    </span>
+  );
+}
+
+function MagneticCard({ href, label, delay, visible }: { href: string; label: string; delay: number; visible: boolean }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -71,8 +100,12 @@ function MagneticCard({ href, label }: { href: string; label: string }) {
     <a
       ref={cardRef}
       href={href}
-      className="glass glass-hover rounded-xl p-6 flex flex-col justify-between min-h-[120px] group transition-[background,border,box-shadow] duration-300"
-      style={{ transition: "transform 0.2s ease-out, background 0.3s, border-color 0.3s, box-shadow 0.3s" }}
+      className="glass glass-hover rounded-xl p-6 flex flex-col justify-between min-h-[120px] group transition-all duration-300"
+      style={{
+        transition: "transform 0.2s ease-out, background 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.6s ease-out",
+        opacity: visible ? 1 : 0,
+        transitionDelay: `${delay}ms`,
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       data-interactive
@@ -85,6 +118,7 @@ function MagneticCard({ href, label }: { href: string; label: string }) {
 
 export default function HeroSection() {
   const { t } = useLang();
+  const { ref, isVisible } = useScrollReveal(0.1);
 
   const navCards = [
     { label: t.education, href: "#education" },
@@ -94,22 +128,40 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center relative z-10 px-6 md:px-16 pt-24">
+    <section ref={ref} className="min-h-screen flex items-center relative z-10 px-6 md:px-16 pt-24">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-muted-foreground text-lg mb-2">{t.greeting}</p>
-          <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4">
+          <p
+            className="text-muted-foreground text-lg mb-2 transition-all duration-700 ease-out"
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)" }}
+          >
+            {t.greeting}
+          </p>
+          <h1
+            className="text-5xl md:text-7xl font-black leading-tight mb-4 transition-all duration-700 ease-out"
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transitionDelay: "100ms" }}
+          >
             <InteractiveText text={t.name} />
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-6">{t.alias}</p>
-          <div className="border-l-4 border-primary pl-4">
-            <p className="text-primary font-semibold text-lg">{t.role}</p>
+          <p
+            className="text-xl md:text-2xl text-muted-foreground mb-6 transition-all duration-700 ease-out"
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transitionDelay: "200ms" }}
+          >
+            {t.alias}
+          </p>
+          <div
+            className="border-l-4 border-primary pl-4 transition-all duration-700 ease-out"
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateX(-20px)" : "translateX(-20px)", transitionDelay: "400ms", ...(isVisible && { transform: "translateX(0)" }) }}
+          >
+            <p className="text-primary font-semibold text-lg">
+              <TypingText text={t.role} />
+            </p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          {navCards.map((card) => (
-            <MagneticCard key={card.href} href={card.href} label={card.label} />
+          {navCards.map((card, i) => (
+            <MagneticCard key={card.href} href={card.href} label={card.label} delay={300 + i * 100} visible={isVisible} />
           ))}
         </div>
       </div>
