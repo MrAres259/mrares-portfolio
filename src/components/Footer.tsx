@@ -54,6 +54,15 @@ export default function Footer() {
               >
                 <Linkedin className="w-4 h-4 text-foreground" />
               </a>
+              <a
+                href="https://www.instagram.com/mr.ares259?igsh=MWxxeGdrYmVzanE0MQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-colors"
+                data-interactive
+              >
+                <Instagram className="w-4 h-4 text-foreground" />
+              </a>
             </div>
           </div>
         </div>
