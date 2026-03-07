@@ -28,7 +28,7 @@ export default function ContactSection() {
         >
           {t.contact}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {items.map((item, i) => {
             const Wrapper = item.href ? "a" : "div";
             const extraProps = item.href ? { href: item.href, target: "_blank", rel: "noopener noreferrer" } : {};
