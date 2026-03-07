@@ -17,7 +17,7 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-[100] glass px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2" data-interactive>
-          <img src={logoImg} alt="RS Logo" className="h-8 w-8 object-contain" />
+          <img src={logoImg} alt="RS Logo" className="h-14 w-14 object-contain" />
         </a>
         <div className="flex items-center gap-4">
           <button
