@@ -23,9 +23,9 @@ interface Cert {
 const certs: Cert[] = [
   { title: "Google Cloud Essentials", issuer: "Google Cloud", date: "2024", image: googleCloud, url: "#", size: "large" },
   { title: "Cisco Networking Basics", issuer: "Cisco", date: "2024", image: netBasics, url: "#", size: "large" },
-  { title: "Cisco Learn-A-Thon 2025", issuer: "Cisco", date: "2025", image: netAthon, url: "#", size: "large" },
+  { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/1f8e08c0-f475-42c2-81af-71147c4b84a0/public_url", size: "large" },
   { title: "Google UX Design Certificate", issuer: "Coursera", date: "Mar 2023", image: googleUx, url: "https://www.credly.com/badges/e08f75e1-6e09-49b6-a65c-1cae17ec0bb8/public_url", size: "small" },
-  { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/1f8e08c0-f475-42c2-81af-71147c4b84a0/public_url", size: "small" },
+  { title: "Cisco Learn-A-Thon 2025", issuer: "Cisco", date: "2025", image: netAthon, url: "#", size: "small" },
   { title: "Git & GitHub Essentials", issuer: "Microsoft", date: "2024", image: gitGithub, url: "#", size: "small" },
 ];
 
