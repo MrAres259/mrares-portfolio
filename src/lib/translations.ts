@@ -34,7 +34,7 @@ export const translations = {
     exp3Desc: "Technical troubleshooting for customer hardware and software issues.",
     // Contact
     location: "Mexico City, Mexico",
-    email: "rigelsantos259@gmail.com",
+    email: "mr.santosc259@gmail.com",
     linkedin: "LinkedIn",
   },
   es: {
@@ -67,7 +67,7 @@ export const translations = {
     exp3Place: "Teleperformance",
     exp3Desc: "Resolución técnica de problemas de hardware y software.",
     location: "Ciudad de México, México",
-    email: "rigelsantos259@gmail.com",
+    email: "mr.santosc259@gmail.com",
     linkedin: "LinkedIn",
   },
 } as const;
