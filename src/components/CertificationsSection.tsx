@@ -99,7 +99,7 @@ function SmallCard({ cert }: { cert: Cert }) {
       href={cert.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="glass rounded-2xl p-5 flex items-center gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(190_37%_52%/0.1)] transition-all duration-400 relative overflow-hidden"
+      className="glass rounded-2xl p-5 flex items-center gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(190_37%_52%/0.1)] hover:-translate-y-2 transition-all duration-400 relative overflow-hidden"
       data-interactive
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
