@@ -60,16 +60,19 @@ function SmallCard({ cert, delay, visible }: { cert: Cert; delay: number; visibl
       href={cert.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="glass rounded-2xl p-5 flex items-center gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(190_37%_52%/0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
+      className="glass rounded-2xl p-5 flex items-center gap-4 group hover:border-primary/40 hover:shadow-[0_0_30px_hsl(190_37%_52%/0.1)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transform: visible
+          ? "translateY(0) scale(1) rotate(0deg)"
+          : "translateY(50px) scale(0.9) rotate(-2deg)",
         transitionDelay: `${delay}ms`,
+        transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       data-interactive
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <img src={cert.image} alt={cert.title} className="w-14 h-14 md:w-16 md:h-16 object-contain shrink-0 group-hover:scale-105 transition-transform duration-300 relative z-10" />
+      <img src={cert.image} alt={cert.title} className="w-14 h-14 md:w-16 md:h-16 object-contain shrink-0 group-hover:scale-110 transition-transform duration-500 relative z-10" />
       <div className="relative z-10 min-w-0">
         <h3 className="text-sm font-bold text-foreground leading-tight">{cert.title}</h3>
         <p className="text-xs text-muted-foreground mt-0.5">{cert.issuer} · {cert.date}</p>
