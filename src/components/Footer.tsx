@@ -1,5 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { MapPin, Mail, Linkedin } from "lucide-react";
+import { MapPin, Mail, Linkedin, Instagram } from "lucide-react";
 import logoImg from "@/assets/Logo.png";
 
 export default function Footer() {
