@@ -45,7 +45,6 @@ function InteractiveText({ text }: { text: string }) {
       ))}
     </span>
   );
-  );
 }
 
 function MagneticCard({ href, label }: { href: string; label: string }) {
