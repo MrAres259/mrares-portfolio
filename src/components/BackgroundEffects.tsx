@@ -13,8 +13,8 @@ export default function BackgroundEffects() {
 
     // Use very diffuse, wide gradients starting/ending at 0% and 100% to prevent hard edges (boxy look)
     el.style.backgroundImage = `
-      linear-gradient(45deg, transparent 0%, hsl(var(--primary) / 0.03) 35%, hsl(var(--primary) / 0.12) 50%, hsl(var(--primary) / 0.03) 65%, transparent 100%),
-      linear-gradient(-45deg, transparent 0%, hsl(var(--primary) / 0.02) 30%, hsl(var(--primary) / 0.1) 50%, hsl(var(--primary) / 0.02) 70%, transparent 100%)
+      linear-gradient(45deg, transparent 0%, hsl(var(--primary) / 0.08) 35%, hsl(var(--primary) / 0.25) 50%, hsl(var(--primary) / 0.08) 65%, transparent 100%),
+      linear-gradient(-45deg, transparent 0%, hsl(var(--primary) / 0.05) 30%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.05) 70%, transparent 100%)
     `;
     el.style.backgroundSize = "400% 400%";
 
