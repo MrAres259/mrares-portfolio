@@ -43,9 +43,9 @@ export default function BackgroundEffects() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           background: `
-            radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), hsl(190 37% 52% / 0.06) 0%, transparent 100%),
-            radial-gradient(600px circle at 20% 80%, hsl(190 37% 52% / 0.03) 0%, transparent 100%),
-            radial-gradient(500px circle at 80% 20%, hsl(0 0% 100% / 0.02) 0%, transparent 100%)
+            radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.08) 0%, transparent 100%),
+            radial-gradient(800px circle at 10% 90%, hsl(var(--accent) / 0.07) 0%, transparent 100%),
+            radial-gradient(700px circle at 90% 10%, hsl(var(--primary) / 0.06) 0%, transparent 100%)
           `,
         }}
       />
@@ -54,13 +54,12 @@ export default function BackgroundEffects() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           background: `
-            radial-gradient(300px circle at 70% 60%, hsl(190 37% 52% / 0.04) 0%, transparent 100%),
-            radial-gradient(250px circle at 30% 30%, hsl(190 37% 52% / 0.03) 0%, transparent 100%)
+            radial-gradient(500px circle at 80% 70%, hsl(var(--accent) / 0.05) 0%, transparent 100%),
+            radial-gradient(450px circle at 20% 30%, hsl(var(--primary) / 0.04) 0%, transparent 100%)
           `,
           transition: "transform 0.1s linear",
         }}
       />
-      <div className="noise-overlay" />
     </>
   );
 }
