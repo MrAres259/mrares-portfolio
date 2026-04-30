@@ -11,20 +11,21 @@ export default function BackgroundEffects() {
     let raf = 0;
     const start = Date.now();
 
+    // Use very diffuse, wide gradients starting/ending at 0% and 100% to prevent hard edges (boxy look)
     el.style.backgroundImage = `
-      linear-gradient(45deg, transparent 40%, hsl(var(--primary) / 0.08) 48%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.08) 52%, transparent 60%),
-      linear-gradient(-45deg, transparent 30%, hsl(var(--primary) / 0.06) 38%, hsl(var(--primary) / 0.15) 40%, hsl(var(--primary) / 0.06) 42%, transparent 50%)
+      linear-gradient(45deg, transparent 0%, hsl(var(--primary) / 0.03) 35%, hsl(var(--primary) / 0.12) 50%, hsl(var(--primary) / 0.03) 65%, transparent 100%),
+      linear-gradient(-45deg, transparent 0%, hsl(var(--primary) / 0.02) 30%, hsl(var(--primary) / 0.1) 50%, hsl(var(--primary) / 0.02) 70%, transparent 100%)
     `;
-    el.style.backgroundSize = "300% 300%";
+    el.style.backgroundSize = "400% 400%";
 
     const animate = () => {
       const elapsed = Date.now() - start;
       
-      // Two separate background positions moving in different speeds and directions
-      const p1 = (elapsed * 0.003) % 200 - 50; // Sweeping from left/top to right/bottom
-      const p2 = 150 - ((elapsed * 0.002) % 200); // Sweeping from right/bottom to left/top
+      // Use sine and cosine for perfectly smooth, continuous oscillation (no violent resets)
+      const p1 = 50 + Math.sin(elapsed * 0.0003) * 50; 
+      const p2 = 50 + Math.cos(elapsed * 0.0002) * 50;
 
-      el.style.backgroundPosition = `${p1}% ${p1}%, ${p2}% ${p2}%`;
+      el.style.backgroundPosition = `${p1}% ${p2}%, ${100 - p2}% ${100 - p1}%`;
 
       raf = requestAnimationFrame(animate);
     };
@@ -37,9 +38,6 @@ export default function BackgroundEffects() {
     <div
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{
-        transition: "background-position 0.1s linear",
-      }}
     />
   );
 }
