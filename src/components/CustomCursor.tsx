@@ -8,23 +8,57 @@ export default function CustomCursor() {
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
     if (isTouchDevice) return;
 
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let boxX = mouseX;
+    let boxY = mouseY;
+    let velX = 0;
+    let velY = 0;
+    let angle = 0;
+
     const move = (e: MouseEvent) => {
-      if (cursorWrapperRef.current) {
-        cursorWrapperRef.current.style.transform = `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
-      }
+      mouseX = e.clientX;
+      mouseY = e.clientY;
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+        dotRef.current.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
       }
     };
 
+    let rafId = 0;
+    const animate = () => {
+      // Bouncy spring physics for maximum silliness
+      const dx = mouseX - boxX;
+      const dy = mouseY - boxY;
+      
+      velX += dx * 0.08; // tension
+      velY += dy * 0.08;
+      
+      velX *= 0.65; // friction - causes wobble!
+      velY *= 0.65;
+      
+      boxX += velX;
+      boxY += velY;
+      
+      // Spin wildly based on movement speed
+      const speed = Math.sqrt(velX * velX + velY * velY);
+      angle += speed * 2; // the faster it moves, the faster it spins
+
+      if (cursorWrapperRef.current) {
+        cursorWrapperRef.current.style.transform = `translate(${boxX - 16}px, ${boxY - 16}px) rotate(${angle}deg)`;
+      }
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+
     const grow = () => {
-      cursorWrapperRef.current?.children[0].classList.add("scale-[1.5]", "rotate-[135deg]", "bg-primary", "opacity-30");
-      dotRef.current?.classList.add("scale-0");
+      cursorWrapperRef.current?.classList.add("scale-[1.8]", "bg-primary/20", "rounded-full");
+      dotRef.current?.classList.add("scale-[2]");
     };
     
     const shrink = () => {
-      cursorWrapperRef.current?.children[0].classList.remove("scale-[1.5]", "rotate-[135deg]", "bg-primary", "opacity-30");
-      dotRef.current?.classList.remove("scale-0");
+      cursorWrapperRef.current?.classList.remove("scale-[1.8]", "bg-primary/20", "rounded-full");
+      dotRef.current?.classList.remove("scale-[2]");
     };
 
     document.addEventListener("mousemove", move);
@@ -36,6 +70,7 @@ export default function CustomCursor() {
     });
 
     return () => {
+      cancelAnimationFrame(rafId);
       document.removeEventListener("mousemove", move);
       elements.forEach((el) => {
         el.removeEventListener("mouseenter", grow);
@@ -51,13 +86,11 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorWrapperRef}
-        className="fixed top-0 left-0 pointer-events-none z-[10000] transition-transform duration-100 ease-out mix-blend-difference"
-      >
-        <div className="w-6 h-6 border-[1.5px] border-primary rotate-45 transition-all duration-300 ease-out" />
-      </div>
+        className="fixed top-0 left-0 w-8 h-8 border-[3px] border-primary border-dashed pointer-events-none z-[10000] transition-colors duration-200"
+      />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[10000] transition-all duration-75 ease-out mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[10000] transition-transform duration-75"
       />
     </>
   );
