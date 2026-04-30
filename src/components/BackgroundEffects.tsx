@@ -11,10 +11,10 @@ export default function BackgroundEffects() {
     let raf = 0;
     const start = Date.now();
 
-    // Use very diffuse, wide gradients starting/ending at 0% and 100% to prevent hard edges (boxy look)
+    // Use sharper stops for thinner lines but ensure edges (0% and 100%) are transparent to avoid boxiness
     el.style.backgroundImage = `
-      linear-gradient(45deg, transparent 0%, hsl(var(--primary) / 0.08) 35%, hsl(var(--primary) / 0.25) 50%, hsl(var(--primary) / 0.08) 65%, transparent 100%),
-      linear-gradient(-45deg, transparent 0%, hsl(var(--primary) / 0.05) 30%, hsl(var(--primary) / 0.2) 50%, hsl(var(--primary) / 0.05) 70%, transparent 100%)
+      linear-gradient(45deg, transparent 0%, transparent 40%, hsl(var(--primary) / 0.1) 47%, hsl(var(--primary) / 0.3) 50%, hsl(var(--primary) / 0.1) 53%, transparent 60%, transparent 100%),
+      linear-gradient(-45deg, transparent 0%, transparent 42%, hsl(var(--primary) / 0.08) 48%, hsl(var(--primary) / 0.25) 50%, hsl(var(--primary) / 0.08) 52%, transparent 58%, transparent 100%)
     `;
     el.style.backgroundSize = "400% 400%";
 
