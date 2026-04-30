@@ -100,7 +100,7 @@ function MagneticCard({ href, label, delay, visible }: { href: string; label: st
     <a
       ref={cardRef}
       href={href}
-      className="glass glass-hover rounded-xl p-6 flex flex-col justify-between min-h-[120px] group transition-all duration-300"
+      className="glass glass-hover rounded-2xl p-6 flex flex-col justify-between min-h-[120px] group transition-all duration-300 relative overflow-hidden"
       style={{
         transition: "transform 0.2s ease-out, background 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.6s ease-out",
         opacity: visible ? 1 : 0,

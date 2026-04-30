@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Lang, translations } from "@/lib/translations";
 
-type TranslationStrings = { [K in keyof (typeof translations)["en"]]: string };
+type TranslationStrings = typeof translations["en"];
 
 type LanguageContextType = {
   lang: Lang;

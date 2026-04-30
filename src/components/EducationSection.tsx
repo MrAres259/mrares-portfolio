@@ -29,13 +29,14 @@ export default function EducationSection() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="glass glass-hover rounded-xl p-8 border-l-4 border-primary hover:translate-x-2 transition-all duration-500"
+              className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(30px)",
                 transitionDelay: `${(i + 1) * 150}ms`,
               }}
             >
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-transparent opacity-70"></div>
               <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
               <p className="text-primary font-medium text-sm mb-1">{item.place}</p>
               <p className="text-muted-foreground text-sm mb-3">{item.date}</p>

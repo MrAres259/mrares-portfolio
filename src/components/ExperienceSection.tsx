@@ -26,21 +26,38 @@ export default function ExperienceSection() {
         >
           {t.experience}
         </h2>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
           {items.map((item, i) => (
             <div
               key={i}
-              className="glass glass-hover rounded-xl p-8 border-l-4 border-primary hover:translate-x-2 transition-all duration-500"
+              className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(30px)",
                 transitionDelay: `${(i + 1) * 150}ms`,
               }}
             >
-              <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
-              <p className="text-primary font-medium text-sm mb-1">{item.place}</p>
-              <p className="text-muted-foreground text-sm mb-3">{item.date}</p>
-              <p className="text-muted-foreground">{item.desc}</p>
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-transparent opacity-70"></div>
+              
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground tracking-tight mb-1">{item.title}</h3>
+                  <p className="text-primary font-medium">{item.place}</p>
+                </div>
+                <div className="mt-2 md:mt-0 text-muted-foreground whitespace-nowrap bg-white/5 px-3 py-1 rounded-full text-sm font-medium">
+                  {item.date}
+                </div>
+              </div>
+              
+              <ul className="list-disc list-outside ml-5 text-muted-foreground space-y-2 mt-4">
+                {Array.isArray(item.desc) ? (
+                  item.desc.map((point: string, idx: number) => (
+                    <li key={idx} className="leading-relaxed text-[15px]">{point}</li>
+                  ))
+                ) : (
+                  <p>{item.desc}</p>
+                )}
+              </ul>
             </div>
           ))}
         </div>
