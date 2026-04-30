@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/Logo.png";
 
 export default function Header() {
   const { lang, toggleLang, t } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    setIsLight(document.documentElement.classList.contains("light"));
+  }, []);
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle("light");
+    setIsLight(!isLight);
+  };
 
   const sections = [
     { label: t.education, href: "#education" },
@@ -20,6 +30,14 @@ export default function Header() {
           <img src={logoImg} alt="RS Logo" className="w-auto" style={{ height: 48 }} />
         </a>
         <div className="flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-1 glass rounded-full"
+            data-interactive
+            aria-label="Toggle Theme"
+          >
+            {isLight ? "🌙" : "☀️"}
+          </button>
           <button
             onClick={toggleLang}
             className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-1 glass rounded-full"
