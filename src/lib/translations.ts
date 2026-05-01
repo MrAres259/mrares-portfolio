@@ -24,10 +24,10 @@ export const translations = {
     exp1Date: "Dec 2025 - Present",
     exp1Place: "Mexico City",
     exp1Desc: [
-      "Guided customers through their cloud adoption lifecycle, translating complex technical needs into optimized IaaS and PaaS deployments on Huawei Cloud.",
-      "Identified platform feature gaps and proactively designed custom workarounds, bridging the divide between customer requirements and current cloud capabilities.",
-      "Executed comprehensive architectural reviews and cloud health checks, advising clients on best practices for cost optimization, security, and performance.",
-      "Collaborated with cross-functional technical teams to resolve complex cloud infrastructure escalations, minimizing downtime for mission-critical customer applications."
+      "Guided customers through cloud adoption, translating technical needs into optimized IaaS/PaaS deployments on Huawei Cloud.",
+      "Identified feature gaps and designed custom workarounds to meet specific customer requirements.",
+      "Executed architectural reviews and health checks, advising on cost, security, and performance optimization.",
+      "Collaborated with technical teams to resolve complex escalations, minimizing downtime for mission-critical applications."
     ],
     exp2Title: "IT Support Technician, Internship",
     exp2Date: "2020 - Nov 2025",
@@ -72,10 +72,10 @@ export const translations = {
     exp1Date: "Dic 2025 - Presente",
     exp1Place: "Ciudad de México",
     exp1Desc: [
-      "Guié a los clientes a través de su ciclo de vida de adopción de la nube, traduciendo necesidades técnicas complejas en implementaciones optimizadas de IaaS y PaaS en Huawei Cloud.",
-      "Identifiqué brechas en las características de la plataforma y diseñé proactivamente soluciones personalizadas, acortando la brecha entre los requisitos del cliente y las capacidades actuales de la nube.",
-      "Ejecuté revisiones arquitectónicas exhaustivas y comprobaciones de estado de la nube, asesorando a los clientes sobre las mejores prácticas para la optimización de costos, seguridad y rendimiento.",
-      "Colaboré con equipos técnicos interfuncionales para resolver escalamientos complejos de infraestructura en la nube, minimizando el tiempo de inactividad para aplicaciones críticas de clientes."
+      "Guié a los clientes en la adopción de la nube, traduciendo necesidades técnicas en implementaciones optimizadas de IaaS/PaaS en Huawei Cloud.",
+      "Identifiqué brechas en funciones y diseñé soluciones personalizadas para cumplir con los requisitos específicos del cliente.",
+      "Ejecuté revisiones arquitectónicas y de estado, asesorando sobre optimización de costos, seguridad y rendimiento.",
+      "Colaboré con equipos técnicos para resolver escalamientos complejos, minimizando el tiempo de inactividad para aplicaciones críticas."
     ],
     exp2Title: "Técnico de Soporte TI, Prácticas",
     exp2Date: "2020 - Nov 2025",
