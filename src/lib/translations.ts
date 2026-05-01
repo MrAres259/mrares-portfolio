@@ -10,6 +10,7 @@ export const translations = {
     experience: "Professional Experience",
     certifications: "Certifications",
     contact: "Contact",
+    motto: "Cloud excellence, strategic innovation",
     // Education
     edu1Title: "Telecom, Systems & Electronics Engineering",
     edu1Place: "Universidad Nacional Autónoma de México",
@@ -60,6 +61,7 @@ export const translations = {
     experience: "Experiencia Profesional",
     certifications: "Certificaciones",
     contact: "Contacto",
+    motto: "Excelencia en la nube, innovación estratégica",
     edu1Title: "Ingeniería en Telecomunicaciones, Sistemas y Electrónica",
     edu1Place: "Universidad Nacional Autónoma de México",
     edu1Date: "2020 - 2026",

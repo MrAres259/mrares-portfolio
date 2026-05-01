@@ -157,6 +157,12 @@ export default function HeroSection() {
               <TypingText text={t.role} />
             </p>
           </div>
+          <p
+            className="mt-8 text-xs md:text-sm font-semibold tracking-[0.25em] text-foreground/60 uppercase transition-all duration-700 ease-out"
+            style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transitionDelay: "600ms" }}
+          >
+            {t.motto}
+          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
