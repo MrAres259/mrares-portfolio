@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src={logoImg} alt="RS" className="w-auto" style={{ height: 40 }} />
+              <img src={logoImg} alt="RS" className="w-auto theme-logo transition-all duration-500" style={{ height: 40 }} />
               <span className="text-lg font-bold text-foreground">Rigel Santos</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">

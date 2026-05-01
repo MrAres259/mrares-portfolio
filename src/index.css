@@ -39,6 +39,11 @@
     --glass-bg: 0 0% 100% / 0.05;
     --glass-border: 0 0% 100% / 0.1;
     --glass-blur: 12px;
+
+    --bg-effect-low: 0.1;
+    --bg-effect-high: 0.3;
+    --bg-effect-low-2: 0.08;
+    --bg-effect-high-2: 0.25;
   }
 
   .light {
@@ -69,6 +74,26 @@
     --border: 190 10% 85%;
     --input: 190 10% 85%;
     --ring: 190 40% 45%;
+
+    --bg-effect-low: 0.3;
+    --bg-effect-high: 0.7;
+    --bg-effect-low-2: 0.25;
+    --bg-effect-high-2: 0.6;
+  }
+}
+
+@layer utilities {
+  .light .theme-logo {
+    filter: invert(1) brightness(0.2) hue-rotate(180deg);
+  }
+  .light .theme-date-badge {
+    background-color: hsl(var(--foreground) / 0.1) !important;
+    color: hsl(var(--foreground) / 0.9) !important;
+    font-weight: 600 !important;
+  }
+  .light .theme-date-text {
+    color: hsl(var(--foreground) / 0.9) !important;
+    font-weight: 600 !important;
   }
 }
 

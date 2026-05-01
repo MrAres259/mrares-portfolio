@@ -27,7 +27,7 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-[100] glass px-6 py-3 flex items-center justify-between">
         <a href="#" className="flex items-center" data-interactive>
-          <img src={logoImg} alt="RS Logo" className="w-auto" style={{ height: 48 }} />
+          <img src={logoImg} alt="RS Logo" className="w-auto theme-logo transition-all duration-500" style={{ height: 48 }} />
         </a>
         <div className="flex items-center gap-4">
           <button

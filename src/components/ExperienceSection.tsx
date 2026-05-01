@@ -44,7 +44,7 @@ export default function ExperienceSection() {
                   <h3 className="text-2xl font-bold text-foreground tracking-tight mb-1">{item.title}</h3>
                   <p className="text-primary font-medium">{item.place}</p>
                 </div>
-                <div className="mt-2 md:mt-0 text-muted-foreground whitespace-nowrap bg-white/5 px-3 py-1 rounded-full text-sm font-medium">
+                <div className="mt-2 md:mt-0 text-muted-foreground whitespace-nowrap bg-white/5 px-3 py-1 rounded-full text-sm font-medium theme-date-badge transition-colors duration-500">
                   {item.date}
                 </div>
               </div>
