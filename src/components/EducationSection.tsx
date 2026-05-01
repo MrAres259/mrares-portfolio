@@ -36,7 +36,7 @@ export default function EducationSection() {
                 transitionDelay: `${(i + 1) * 150}ms`,
               }}
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-transparent opacity-70"></div>
+              <div className="absolute top-0 left-0 w-1 h-full theme-pour-line"></div>
               <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
               <p className="text-primary font-medium text-sm mb-1">{item.place}</p>
               <p className="text-muted-foreground text-sm mb-3 theme-date-text transition-colors duration-500">{item.date}</p>

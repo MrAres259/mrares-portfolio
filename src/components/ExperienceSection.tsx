@@ -37,7 +37,7 @@ export default function ExperienceSection() {
                 transitionDelay: `${(i + 1) * 150}ms`,
               }}
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-transparent opacity-70"></div>
+              <div className="absolute top-0 left-0 w-1 h-full theme-pour-line"></div>
               
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                 <div>
