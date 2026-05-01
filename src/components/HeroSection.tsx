@@ -128,7 +128,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center relative z-10 px-6 md:px-16 pt-24">
+    <section ref={ref} className="min-h-[100svh] flex items-start md:items-center relative z-10 px-6 md:px-16 pt-32 md:pt-24 pb-20 md:pb-0">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <p
