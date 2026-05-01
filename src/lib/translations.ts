@@ -24,10 +24,10 @@ export const translations = {
     exp1Date: "Dec 2025 - Present",
     exp1Place: "Mexico City",
     exp1Desc: [
-      "Guided customers through their cloud adoption lifecycle, translating complex technical needs into optimized IaaS and PaaS deployments on Huawei Cloud.",
-      "Identified platform feature gaps and proactively designed custom workarounds, bridging the divide between customer requirements and current cloud capabilities.",
-      "Executed comprehensive architectural reviews and cloud health checks, advising clients on best practices for cost optimization, security, and performance.",
-      "Collaborated with cross-functional technical teams to resolve complex cloud infrastructure escalations, minimizing downtime for mission-critical customer applications."
+      "Guided cloud adoption, translating technical needs into optimized IaaS/PaaS deployments.",
+      "Designed custom workarounds for platform gaps to meet customer requirements.",
+      "Performed architectural reviews and health checks for cost, security, and performance optimization.",
+      "Resolved complex infrastructure escalations with cross-functional teams to minimize downtime."
     ],
     exp2Title: "IT Support Technician, Internship",
     exp2Date: "2020 - Nov 2025",
@@ -72,10 +72,10 @@ export const translations = {
     exp1Date: "Dic 2025 - Presente",
     exp1Place: "Ciudad de México",
     exp1Desc: [
-      "Guié a los clientes a través de su ciclo de vida de adopción de la nube, traduciendo necesidades técnicas complejas en implementaciones optimizadas de IaaS y PaaS en Huawei Cloud.",
-      "Identifiqué brechas en las características de la plataforma y diseñé proactivamente soluciones personalizadas, acortando la brecha entre los requisitos del cliente y las capacidades actuales de la nube.",
-      "Ejecuté revisiones arquitectónicas exhaustivas y comprobaciones de estado de la nube, asesorando a los clientes sobre las mejores prácticas para la optimización de costos, seguridad y rendimiento.",
-      "Colaboré con equipos técnicos interfuncionales para resolver escalamientos complejos de infraestructura en la nube, minimizando el tiempo de inactividad para aplicaciones críticas de clientes."
+      "Guié la adopción de la nube, traduciendo necesidades en implementaciones IaaS/PaaS optimizadas.",
+      "Diseñé soluciones personalizadas para cubrir brechas de la plataforma y cumplir requisitos.",
+      "Realicé revisiones arquitectónicas y de estado para optimizar costos, seguridad y rendimiento.",
+      "Resolví escalamientos complejos de infraestructura con equipos técnicos para minimizar inactividad."
     ],
     exp2Title: "Técnico de Soporte TI, Prácticas",
     exp2Date: "2020 - Nov 2025",
