@@ -52,12 +52,12 @@ export default function CustomCursor() {
     rafId = requestAnimationFrame(animate);
 
     const grow = () => {
-      cursorWrapperRef.current?.classList.add("scale-[1.8]", "bg-white/20", "rounded-full");
+      cursorWrapperRef.current?.classList.add("scale-[1.8]", "bg-foreground/20", "rounded-full");
       dotRef.current?.classList.add("scale-[2]");
     };
     
     const shrink = () => {
-      cursorWrapperRef.current?.classList.remove("scale-[1.8]", "bg-white/20", "rounded-full");
+      cursorWrapperRef.current?.classList.remove("scale-[1.8]", "bg-foreground/20", "rounded-full");
       dotRef.current?.classList.remove("scale-[2]");
     };
 
@@ -86,11 +86,11 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorWrapperRef}
-        className="fixed top-0 left-0 w-8 h-8 border-[3px] border-white border-dashed pointer-events-none z-[10000] transition-colors duration-200"
+        className="fixed top-0 left-0 w-8 h-8 border-[3px] border-foreground border-dashed pointer-events-none z-[10000] transition-colors duration-200"
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] transition-transform duration-75"
+        className="fixed top-0 left-0 w-2 h-2 bg-foreground rounded-full pointer-events-none z-[10000] transition-transform duration-75"
       />
     </>
   );
