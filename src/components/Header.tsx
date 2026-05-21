@@ -17,8 +17,9 @@ export default function Header() {
   };
 
   const sections = [
-    { label: t.education, href: "#education" },
+    { label: t.projects, href: "#projects" },
     { label: t.experience, href: "#experience" },
+    { label: t.education, href: "#education" },
     { label: t.certifications, href: "#certifications" },
     { label: t.contact, href: "#contact" },
   ];

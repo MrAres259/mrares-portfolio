@@ -120,9 +120,10 @@ export default function HeroSection() {
   const { t } = useLang();
   const { ref, isVisible } = useScrollReveal(0.1);
 
-  const navCards = [
-    { label: t.education, href: "#education" },
+    const navCards = [
+    { label: t.projects, href: "#projects" },
     { label: t.experience, href: "#experience" },
+    { label: t.education, href: "#education" },
     { label: t.certifications, href: "#certifications" },
     { label: t.contact, href: "#contact" },
   ];
@@ -144,7 +145,7 @@ export default function HeroSection() {
             <InteractiveText text={t.name} />
           </h1>
           <p
-            className="text-xl md:text-2xl text-muted-foreground mb-6 transition-all duration-700 ease-out"
+            className="text-lg md:text-xl font-semibold tracking-wide text-foreground/80 mb-6 transition-all duration-700 ease-out"
             style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transitionDelay: "200ms" }}
           >
             {t.alias}
