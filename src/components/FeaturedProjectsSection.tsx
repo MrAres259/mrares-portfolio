@@ -2,6 +2,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
 import { FolderGit2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function FeaturedProjectsSection() {
   const { t } = useLang();
@@ -12,8 +13,8 @@ export default function FeaturedProjectsSection() {
     {
       title: t.project1Title,
       desc: t.project1Desc,
-      tech: ["React", "TypeScript", "TailwindCSS", "Node.js"],
-      link: "#",
+      tech: ["Huawei Cloud", "ModelArts", "CCI 2.0", "FunctionGraph"],
+      link: "/project/insaight",
     },
     {
       title: t.project2Title,
@@ -38,9 +39,9 @@ export default function FeaturedProjectsSection() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
-            <a
+            <Link
               key={i}
-              href={project.link}
+              to={project.link}
               className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative flex flex-col h-full group"
               style={{
                 opacity: isVisible ? 1 : 0,
@@ -71,7 +72,7 @@ export default function FeaturedProjectsSection() {
                   </span>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

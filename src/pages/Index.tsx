@@ -1,4 +1,4 @@
-import { LanguageProvider } from "@/contexts/LanguageContext";
+
 import BackgroundEffects from "@/components/BackgroundEffects";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
-    <LanguageProvider>
+    <>
       <BackgroundEffects />
       <CustomCursor />
       <Header />
@@ -27,6 +27,6 @@ export default function Index() {
         <ContactSection />
       </main>
       <Footer />
-    </LanguageProvider>
+    </>
   );
 }
