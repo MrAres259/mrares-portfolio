@@ -107,6 +107,7 @@ export default function ExperienceSection() {
         { name: "Python", level: "core" },
         { name: "TypeScript", level: "core" },
         { name: "SQL", level: "core" },
+        { name: "API Integration", level: "core" },
         { name: "Software Eng", level: "core" }
       ]
     },
