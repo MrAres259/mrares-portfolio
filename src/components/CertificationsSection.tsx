@@ -21,7 +21,7 @@ interface Cert {
   size: CertSize;
 }
 
-function FeaturedCard({ cert, delay, visible, featuredLabel }: { cert: Cert; delay: number; visible: boolean; featuredLabel: string }) {
+function FeaturedCard({ cert, delay, visible, featuredLabel, certDetails }: { cert: Cert; delay: number; visible: boolean; featuredLabel: string; certDetails: string }) {
   return (
     <a
       href={cert.url}
@@ -41,7 +41,7 @@ function FeaturedCard({ cert, delay, visible, featuredLabel }: { cert: Cert; del
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-bold mb-4 border border-primary/30 tracking-wide">{featuredLabel}</div>
         <h3 className="text-2xl md:text-4xl font-black text-foreground mb-3 leading-tight">{cert.title}</h3>
         <p className="text-muted-foreground text-lg">{cert.issuer} · {cert.date}</p>
-        <p className="text-muted-foreground/70 text-sm mt-2 font-mono tracking-wide select-text cursor-text" onClick={(e) => e.stopPropagation()}>{(t as any).certHcipDetails}</p>
+        <p className="text-muted-foreground/70 text-sm mt-2 font-mono tracking-wide select-text cursor-text" onClick={(e) => e.stopPropagation()}>{certDetails}</p>
       </div>
       <ExternalLink className="w-6 h-6 text-muted-foreground absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity" />
     </a>
@@ -107,7 +107,7 @@ export default function CertificationsSection() {
   const { ref: parallaxRef, offset } = useParallax(0.06);
 
   const certs: Cert[] = [
-    { title: (t as any).certHcip, issuer: "Huawei", date: "2026", image: hcipCs, url: "https://e.huawei.com/cn/talent/#/cert/certificate-verification", size: "xlarge" },
+    { title: t.certHcip, issuer: "Huawei", date: "2026", image: hcipCs, url: "https://e.huawei.com/cn/talent/#/cert/certificate-verification", size: "xlarge" },
     { title: "Google Cloud Essentials", issuer: "Google Cloud", date: "2024", image: googleCloud, url: "https://www.skills.google/public_profiles/423a0a4c-eb10-4534-93b6-ab302b738f23/badges/2086098", size: "large" },
     { title: "Cisco Networking Basics", issuer: "Cisco", date: "2024", image: netBasics, url: "https://www.credly.com/badges/40cdeeb1-2ff9-4e9b-853c-24b11a001c9e", size: "large" },
     { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/0d8c4c4f-bb48-4310-be03-be1b26b8d6ca", size: "large" },
@@ -135,7 +135,7 @@ export default function CertificationsSection() {
         </h2>
 
         {xlarge.map((cert, i) => (
-          <FeaturedCard key={`xl-${i}`} cert={cert} delay={100} visible={isVisible} featuredLabel={(t as any).featuredCert} />
+          <FeaturedCard key={`xl-${i}`} cert={cert} delay={100} visible={isVisible} featuredLabel={t.featuredCert} certDetails={t.certHcipDetails} />
         ))}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
