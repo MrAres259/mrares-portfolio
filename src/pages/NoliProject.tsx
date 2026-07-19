@@ -5,9 +5,9 @@ import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { ArrowLeft, CheckCircle2, Shield, Brain, LineChart, Database, Activity } from "lucide-react";
+import { ArrowLeft, ServerCrash, ShieldAlert, Brain, Search, Activity, Network } from "lucide-react";
 
-export default function InsaightProject() {
+export default function NoliProject() {
   const { t } = useLang();
   const [activeStep, setActiveStep] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -15,40 +15,40 @@ export default function InsaightProject() {
 
   const flowSteps = [
     {
-      title: t.insaightNl2Sql,
-      desc: t.insaightNl2SqlDesc,
+      title: t.noliArchitecture || "System Architecture",
+      desc: t.noliArchitectureDesc || "",
+      icon: <Network className="w-8 h-8 text-primary" />,
+      image: "/noli/Noli-Arch.png"
+    },
+    {
+      title: t.noliNl2Es,
+      desc: t.noliNl2EsDesc,
       icon: <Brain className="w-8 h-8 text-primary" />,
-      image: "/insaight/1.png"
+      image: "/noli/Main Sectionjpeg.jpeg"
     },
     {
-      title: t.insaightSemanticRouting,
-      desc: t.insaightSemanticRoutingDesc,
+      title: t.noliRootCauseRemediation || "AI Root Cause & Remediation",
+      desc: t.noliRootCauseRemediationDesc || "",
+      icon: <Search className="w-8 h-8 text-primary" />,
+      image: "/noli/Remediation.jpeg"
+    },
+    {
+      title: t.noliMonitoring,
+      desc: t.noliMonitoringDesc,
       icon: <Activity className="w-8 h-8 text-primary" />,
-      image: "/insaight/4.png"
+      image: "/noli/Monitoring.png"
     },
     {
-      title: t.insaightSecurity,
-      desc: t.insaightSecurityDesc,
-      icon: <Shield className="w-8 h-8 text-primary" />,
-      image: "/insaight/3.png"
+      title: t.noliAlerting,
+      desc: t.noliAlertingDesc,
+      icon: <ShieldAlert className="w-8 h-8 text-primary" />,
+      image: "/noli/Telegram notifications.png"
     },
     {
-      title: t.insaightSelfCorrection,
-      desc: t.insaightSelfCorrectionDesc,
-      icon: <CheckCircle2 className="w-8 h-8 text-primary" />,
-      image: "/insaight/6.png"
-    },
-    {
-      title: t.insaightResults,
-      desc: t.insaightResultsDesc,
-      icon: <LineChart className="w-8 h-8 text-primary" />,
-      image: "/insaight/2.png"
-    },
-    {
-      title: t.insaightAdmin,
-      desc: t.insaightAdminDesc,
-      icon: <Database className="w-8 h-8 text-primary" />,
-      image: "/insaight/7.png"
+      title: t.noliFaultInjection,
+      desc: t.noliFaultInjectionDesc,
+      icon: <ServerCrash className="w-8 h-8 text-primary" />,
+      image: "/noli/SMS notifications.png"
     }
   ];
 
@@ -85,17 +85,17 @@ export default function InsaightProject() {
         <div className="max-w-7xl mx-auto">
           <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors mb-6 sm:mb-8 group font-medium">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            {t.insaightBack}
+            {t.noliBack}
           </Link>
           
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 mb-10 lg:mb-24 items-center">
             <div className="flex-1">
               <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-4 sm:mb-6 text-foreground tracking-tight">
-                {t.project1Title}
+                {t.project2Title}
               </h1>
               
               <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
-                {["Huawei Cloud MaaS", "DeepSeek-V4-Flash", "Serverless", "CCI 2.0", "FunctionGraph", "SMN SDK"].map((tag, i) => (
+                {["Huawei Cloud MAAS", "Elasticsearch (CSS)", "DeepSeek-V4-Flash", "GLM 5.2", "FastAPI", "Next.js", "React", "SMN SDK", "AI Agent"].map((tag, i) => (
                   <span key={i} className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold border border-primary/20 backdrop-blur-sm">
                     {tag}
                   </span>
@@ -103,16 +103,16 @@ export default function InsaightProject() {
               </div>
 
               <p className="text-base sm:text-xl md:text-2xl text-muted-foreground leading-relaxed text-justify">
-                {t.insaightOverview}
+                {t.noliOverview}
               </p>
             </div>
             
             <div className="flex-1 w-full relative">
                <div 
                  className="glass rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 aspect-video flex items-center justify-center p-1.5 sm:p-2 group shadow-[0_0_40px_rgba(var(--primary),0.1)] cursor-zoom-in"
-                 onClick={() => setSelectedImage("/insaight/5.png")}
+                 onClick={() => setSelectedImage("/noli/Main Sectionjpeg.jpeg")}
                >
-                 <img src="/insaight/5.png" alt="Insaight Dashboard Overview" className="rounded-xl sm:rounded-2xl w-full h-full object-cover shadow-2xl transition-transform duration-700 group-hover:scale-105" />
+                 <img src="/noli/Main Sectionjpeg.jpeg" alt="Noli Overview" className="rounded-xl sm:rounded-2xl w-full h-full object-cover shadow-2xl transition-transform duration-700 group-hover:scale-105" />
                </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function InsaightProject() {
 
           <div className="text-center mb-10 sm:mb-16 md:mb-24">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-foreground">Interactive Workflow</h2>
-            <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto">Scroll down to see how InsAIght processes natural language into actionable intelligence.</p>
+            <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto">Scroll down to see how NOLI handles complex network intelligence queries and remediations.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-start relative">
@@ -196,4 +196,3 @@ export default function InsaightProject() {
     </>
   );
 }
-

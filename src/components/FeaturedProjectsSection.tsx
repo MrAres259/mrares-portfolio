@@ -13,14 +13,14 @@ export default function FeaturedProjectsSection() {
     {
       title: t.project1Title,
       desc: t.project1Desc,
-      tech: ["Huawei Cloud", "ModelArts", "CCI 2.0", "FunctionGraph"],
+      tech: ["Huawei Cloud", "MaaS", "DeepSeek-V4-Flash", "SQL", "SMN", "Python"],
       link: "/project/insaight",
     },
     {
       title: t.project2Title,
       desc: t.project2Desc,
-      tech: ["AWS", "Docker", "Kubernetes", "Python"],
-      link: "#",
+      tech: ["Huawei Cloud", "MaaS", "Elasticsearch", "DeepSeek-V4-Flash", "GLM 5.2", "FastAPI", "Next.js", "Python"],
+      link: "/project/noli",
     },
   ];
 
