@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import InsaightProject from "./pages/InsaightProject";
 import NoliProject from "./pages/NoliProject";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { ScrollProgress } from "./components/ScrollProgress";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <LanguageProvider>
+        <ScrollProgress />
         <Toaster />
         <Sonner />
         <BrowserRouter>

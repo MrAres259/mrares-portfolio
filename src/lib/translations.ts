@@ -34,10 +34,11 @@ export const translations = {
     exp1Date: "Dec 2025 - Present",
     exp1Place: "Mexico City",
     exp1Desc: [
-      "Guided cloud adoption, translating technical needs into optimized IaaS/PaaS deployments.",
-      "Designed custom workarounds for platform gaps to meet customer requirements.",
-      "Performed architectural reviews and health checks for cost, security, and performance optimization.",
-      "Resolved complex infrastructure escalations with cross-functional teams to minimize downtime."
+      "Designed and deployed custom software and cloud infrastructure solutions tailored to resolve specific business challenges and accelerate enterprise digital transformation.",
+      "Led multi-cloud adoption strategies and end-to-end migrations, utilizing Infrastructure as Code (IaC) to automate the provisioning and deployment of scalable enterprise environments.",
+      "Acted as the primary technical liaison for enterprise clients, executing advanced troubleshooting and root-cause analysis to ensure high availability and resolve complex incidents in production environments.",
+      "Validated security postures across multi-VPC topologies by conducting penetration testing on Web Application Firewalls (WAF) and Cloud Firewalls, ensuring strict policy enforcement and protection against advanced threats.",
+      "Streamlined cloud operations by engineering serverless automation architectures and configuration scripts, significantly reducing manual effort and minimizing deployment times."
     ],
     exp2Title: "IT Support Technician, Internship",
     exp2Date: "2020 - Nov 2025",
@@ -48,13 +49,13 @@ export const translations = {
       "Experience managing operating systems (Linux, Windows, and Android).",
       "Intermediate cybersecurity techniques."
     ],
-    exp3Title: "Customer Care Agent, Teleperformance",
-    exp3Date: "Mar 2020 - Jan 2021",
-    exp3Place: "Mexico City",
+    exp3Title: "Bilingual Technical Support & Sales Representative",
+    exp3Date: "Summers 2022 - 2025",
+    exp3Place: "Various Premium Service Providers - Mexico City, State",
     exp3Desc: [
-      "Provided client support resolving service inquiries.",
-      "Collaborated with technical support team to troubleshoot hardware and software on customer's devices.",
-      "Sales oriented to a specific line of business goal."
+      "Delivered specialized technical support and dedicated customer service for premium-tier accounts, effectively diagnosing issues and ensuring rapid resolution of complex inquiries in a fully bilingual (English/Spanish) environment.",
+      "Executed targeted sales and cross-selling strategies by analyzing customer needs and account profiles, successfully recommending tailored solutions to drive revenue and account growth.",
+      "Managed high-volume inbound communications under pressure, consistently meeting strict Service Level Agreements (SLAs) and maintaining high customer satisfaction metrics."
     ],
     // Contact
     location: "Mexico City, Mexico",
@@ -135,10 +136,11 @@ export const translations = {
     exp1Date: "Dic 2025 - Presente",
     exp1Place: "Ciudad de México",
     exp1Desc: [
-      "Guié la adopción de la nube, traduciendo necesidades en implementaciones IaaS/PaaS optimizadas.",
-      "Diseñé soluciones personalizadas para cubrir brechas de la plataforma y cumplir requisitos.",
-      "Realicé revisiones arquitectónicas y de estado para optimizar costos, seguridad y rendimiento.",
-      "Resolví escalamientos complejos de infraestructura con equipos técnicos para minimizar inactividad."
+      "Diseñé e implementé software a medida y soluciones de infraestructura en la nube adaptadas para resolver desafíos comerciales específicos y acelerar la transformación digital empresarial.",
+      "Lideré estrategias de adopción de múltiples nubes y migraciones de extremo a extremo, utilizando Infraestructura como Código (IaC) para automatizar el aprovisionamiento y despliegue de entornos empresariales escalables.",
+      "Actué como enlace técnico principal para clientes empresariales, ejecutando solución de problemas avanzada y análisis de causa raíz para garantizar alta disponibilidad y resolver incidentes complejos en entornos de producción.",
+      "Validé posturas de seguridad a través de topologías multi-VPC realizando pruebas de penetración en Firewalls de Aplicaciones Web (WAF) y Firewalls en la Nube, garantizando el cumplimiento estricto de políticas y protección contra amenazas avanzadas.",
+      "Optimicé las operaciones en la nube diseñando arquitecturas de automatización sin servidor y scripts de configuración, reduciendo significativamente el esfuerzo manual y minimizando los tiempos de despliegue."
     ],
     exp2Title: "Técnico de Soporte TI, Prácticas",
     exp2Date: "2020 - Nov 2025",
@@ -149,13 +151,13 @@ export const translations = {
       "Experiencia en el manejo de sistemas operativos (Linux, Windows y Android).",
       "Técnicas intermedias de ciberseguridad."
     ],
-    exp3Title: "Agente de Atención al Cliente, Teleperformance",
-    exp3Date: "Mar 2020 - Ene 2021",
-    exp3Place: "Ciudad de México",
+    exp3Title: "Representante Bilingüe de Soporte Técnico y Ventas",
+    exp3Date: "Veranos 2022 - 2025",
+    exp3Place: "Varios Proveedores de Servicios Premium - Estado de México",
     exp3Desc: [
-      "Proporcioné soporte al cliente resolviendo consultas de servicio.",
-      "Colaboré con el equipo de soporte técnico para solucionar problemas de hardware y software en los dispositivos de los clientes.",
-      "Orientado a ventas con un objetivo específico de línea de negocio."
+      "Brindé soporte técnico especializado y servicio al cliente dedicado para cuentas de nivel premium, diagnosticando problemas de manera efectiva y garantizando una rápida resolución de consultas complejas en un entorno completamente bilingüe (inglés/español).",
+      "Ejecuté estrategias de ventas dirigidas y ventas cruzadas al analizar las necesidades del cliente y los perfiles de cuenta, recomendando con éxito soluciones personalizadas para impulsar los ingresos y el crecimiento de la cuenta.",
+      "Manejé comunicaciones entrantes de alto volumen bajo presión, cumpliendo consistentemente con estrictos Acuerdos de Nivel de Servicio (SLA) y manteniendo altas métricas de satisfacción del cliente."
     ],
     location: "Ciudad de México, México",
     email: "mr.santosc259@gmail.com",

@@ -6,7 +6,7 @@ import { useParallax } from "@/hooks/useParallax";
 export default function ContactSection() {
   const { t } = useLang();
   const { ref, isVisible } = useScrollReveal(0.15);
-  const { ref: parallaxRef, offset } = useParallax(0.06);
+  const { ref: parallaxRef } = useParallax(0.06);
 
   const items = [
     { icon: MapPin, label: t.location, href: null },
@@ -23,7 +23,7 @@ export default function ContactSection() {
           className="text-4xl md:text-5xl font-black mb-12 text-foreground transition-all duration-700 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: `translateY(${isVisible ? offset : 20 + offset}px)`,
+            transform: `translateY(calc(var(--parallax-y, 0px) + ${isVisible ? 0 : 20}px))`,
           }}
         >
           {t.contact}

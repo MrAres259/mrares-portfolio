@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
+// Writes the parallax offset straight to a CSS var on the element (no React
+// re-render per scroll frame). Consume it in a transform via
+// translateY(calc(var(--parallax-y, 0px) + ...)). The element's existing
+// transform transition still smooths it exactly as before.
 export function useParallax(factor = 0.08) {
   const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     let raf = 0;
@@ -14,7 +17,7 @@ export function useParallax(factor = 0.08) {
         const rect = el.getBoundingClientRect();
         const center = rect.top + rect.height / 2;
         const viewCenter = window.innerHeight / 2;
-        setOffset((center - viewCenter) * factor);
+        el.style.setProperty("--parallax-y", `${(center - viewCenter) * factor}px`);
       });
     };
 
@@ -26,5 +29,5 @@ export function useParallax(factor = 0.08) {
     };
   }, [factor]);
 
-  return { ref, offset };
+  return { ref };
 }

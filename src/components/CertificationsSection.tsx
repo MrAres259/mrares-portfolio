@@ -1,5 +1,6 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Copy, Check } from "lucide-react";
+import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
 import googleUx from "@/assets/google_ux.png";
@@ -19,9 +20,22 @@ interface Cert {
   image: string;
   url: string;
   size: CertSize;
+  certNo?: string;
 }
 
 function FeaturedCard({ cert, delay, visible, featuredLabel, certDetails }: { cert: Cert; delay: number; visible: boolean; featuredLabel: string; certDetails: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (cert.certNo) {
+      navigator.clipboard.writeText(cert.certNo);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <a
       href={cert.url}
@@ -41,9 +55,20 @@ function FeaturedCard({ cert, delay, visible, featuredLabel, certDetails }: { ce
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-bold mb-4 border border-primary/30 tracking-wide">{featuredLabel}</div>
         <h3 className="text-2xl md:text-4xl font-black text-foreground mb-3 leading-tight">{cert.title}</h3>
         <p className="text-muted-foreground text-lg">{cert.issuer} · {cert.date}</p>
-        <p className="text-muted-foreground/70 text-sm mt-2 font-mono tracking-wide select-text cursor-text" onClick={(e) => e.stopPropagation()}>{certDetails}</p>
+        <div className="flex items-center justify-center md:justify-start gap-2 mt-2">
+          <p className="text-muted-foreground/70 text-sm font-mono tracking-wide select-text cursor-text" onClick={(e) => e.stopPropagation()}>{certDetails}</p>
+          {cert.certNo && (
+            <button
+              onClick={handleCopy}
+              className="p-1.5 rounded-md hover:bg-primary/20 text-muted-foreground hover:text-primary transition-colors focus:outline-none"
+              title="Copy Certificate Number"
+            >
+              {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+            </button>
+          )}
+        </div>
       </div>
-      <ExternalLink className="w-6 h-6 text-muted-foreground absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <ExternalLink className="w-6 h-6 text-muted-foreground absolute top-6 right-6 opacity-70 group-hover:opacity-100 transition-opacity" />
     </a>
   );
 }
@@ -104,10 +129,10 @@ function SmallCard({ cert, delay, visible }: { cert: Cert; delay: number; visibl
 export default function CertificationsSection() {
   const { t } = useLang();
   const { ref, isVisible } = useScrollReveal(0.1);
-  const { ref: parallaxRef, offset } = useParallax(0.06);
+  const { ref: parallaxRef } = useParallax(0.06);
 
   const certs: Cert[] = [
-    { title: t.certHcip, issuer: "Huawei", date: "2026", image: hcipCs, url: "https://e.huawei.com/cn/talent/#/cert/certificate-verification", size: "xlarge" },
+    { title: t.certHcip, issuer: "Huawei", date: "2026", image: hcipCs, url: "https://e.huawei.com/cn/talent/#/cert/certificate-verification", size: "xlarge", certNo: "010202602521810435131409" },
     { title: "Google Cloud Essentials", issuer: "Google Cloud", date: "2024", image: googleCloud, url: "https://www.skills.google/public_profiles/423a0a4c-eb10-4534-93b6-ab302b738f23/badges/2086098", size: "large" },
     { title: "Cisco Networking Basics", issuer: "Cisco", date: "2024", image: netBasics, url: "https://www.credly.com/badges/40cdeeb1-2ff9-4e9b-853c-24b11a001c9e", size: "large" },
     { title: "Google IT Support", issuer: "Coursera", date: "2023", image: googleIt, url: "https://www.credly.com/badges/0d8c4c4f-bb48-4310-be03-be1b26b8d6ca", size: "large" },
@@ -128,7 +153,7 @@ export default function CertificationsSection() {
           className="text-4xl md:text-5xl font-black mb-12 text-foreground transition-all duration-700 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: `translateY(${isVisible ? offset : 20 + offset}px)`,
+            transform: `translateY(calc(var(--parallax-y, 0px) + ${isVisible ? 0 : 20}px))`,
           }}
         >
           {t.certifications}

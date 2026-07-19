@@ -5,7 +5,7 @@ import { useParallax } from "@/hooks/useParallax";
 export default function EducationSection() {
   const { t } = useLang();
   const { ref, isVisible } = useScrollReveal(0.15);
-  const { ref: parallaxRef, offset } = useParallax(0.06);
+  const { ref: parallaxRef } = useParallax(0.06);
 
   const items = [
     { title: t.edu1Title, place: t.edu1Place, date: t.edu1Date, desc: t.edu1Desc },
@@ -20,7 +20,7 @@ export default function EducationSection() {
           className="text-4xl md:text-5xl font-black mb-12 text-foreground transition-all duration-700 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: `translateY(${isVisible ? offset : 20 + offset}px)`,
+            transform: `translateY(calc(var(--parallax-y, 0px) + ${isVisible ? 0 : 20}px))`,
           }}
         >
           {t.education}
@@ -29,7 +29,7 @@ export default function EducationSection() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
+              className="group glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(30px)",
@@ -37,9 +37,17 @@ export default function EducationSection() {
               }}
             >
               <div className="absolute top-0 left-0 w-1 h-full theme-pour-line"></div>
-              <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
-              <p className="text-primary font-medium text-sm mb-1">{item.place}</p>
-              <p className="text-muted-foreground text-sm mb-3 theme-date-text transition-colors duration-500">{item.date}</p>
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-primary/90 font-medium text-sm">{item.place}</p>
+                </div>
+                <div className="shrink-0">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/20 shadow-[0_0_15px_hsl(var(--primary)/0.15)] group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all duration-300 theme-date-badge">
+                    {item.date}
+                  </span>
+                </div>
+              </div>
               <p className="text-muted-foreground">{item.desc}</p>
             </div>
           ))}

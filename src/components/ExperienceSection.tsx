@@ -5,7 +5,7 @@ import { useParallax } from "@/hooks/useParallax";
 export default function ExperienceSection() {
   const { t } = useLang();
   const { ref, isVisible } = useScrollReveal(0.15);
-  const { ref: parallaxRef, offset } = useParallax(0.06);
+  const { ref: parallaxRef } = useParallax(0.06);
 
   const items = [
     { title: t.exp1Title, date: t.exp1Date, place: t.exp1Place, desc: t.exp1Desc },
@@ -21,7 +21,7 @@ export default function ExperienceSection() {
           className="text-4xl md:text-5xl font-black mb-12 text-foreground transition-all duration-700 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: `translateY(${isVisible ? offset : 20 + offset}px)`,
+            transform: `translateY(calc(var(--parallax-y, 0px) + ${isVisible ? 0 : 20}px))`,
           }}
         >
           {t.experience}
@@ -30,7 +30,7 @@ export default function ExperienceSection() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
+              className="group glass glass-hover rounded-2xl p-8 transition-all duration-500 relative overflow-hidden"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(30px)",
@@ -44,8 +44,10 @@ export default function ExperienceSection() {
                   <h3 className="text-2xl font-bold text-foreground tracking-tight mb-1">{item.title}</h3>
                   <p className="text-primary font-medium">{item.place}</p>
                 </div>
-                <div className="mt-2 md:mt-0 w-fit text-muted-foreground whitespace-nowrap bg-white/5 px-3 py-1 rounded-full text-sm font-medium theme-date-badge transition-colors duration-500">
-                  {item.date}
+                <div className="shrink-0 mt-2 md:mt-0">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/20 shadow-[0_0_15px_hsl(var(--primary)/0.15)] group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all duration-300 theme-date-badge">
+                    {item.date}
+                  </span>
                 </div>
               </div>
               
