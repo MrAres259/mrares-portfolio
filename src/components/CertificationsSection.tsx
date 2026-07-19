@@ -41,6 +41,7 @@ function FeaturedCard({ cert, delay, visible, featuredLabel }: { cert: Cert; del
         <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-bold mb-4 border border-primary/30 tracking-wide">{featuredLabel}</div>
         <h3 className="text-2xl md:text-4xl font-black text-foreground mb-3 leading-tight">{cert.title}</h3>
         <p className="text-muted-foreground text-lg">{cert.issuer} · {cert.date}</p>
+        <p className="text-muted-foreground/70 text-sm mt-2 font-mono tracking-wide">Cert. No. 010202602521810435131409 · Valid through May 2029</p>
       </div>
       <ExternalLink className="w-6 h-6 text-muted-foreground absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity" />
     </a>
