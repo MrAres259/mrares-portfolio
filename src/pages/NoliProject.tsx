@@ -5,10 +5,10 @@ import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ServerCrash, ShieldAlert, Brain, Search, Activity, Network } from "lucide-react";
+import { ArrowLeft, ServerCrash, ShieldAlert, Brain, Search, Activity, Network, Smartphone } from "lucide-react";
 
 export default function NoliProject() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [activeStep, setActiveStep] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -45,35 +45,48 @@ export default function NoliProject() {
       image: "/noli/Telegram notifications.png"
     },
     {
-      title: t.noliFaultInjection,
-      desc: t.noliFaultInjectionDesc,
-      icon: <ServerCrash className="w-8 h-8 text-primary" />,
+      title: t.noliSmsEscalation || "Automated SMS Escalation",
+      desc: t.noliSmsEscalationDesc || "For sustained critical incidents, the system autonomously triggers an SMS escalation via the Huawei Cloud SMN SDK to notify on-call engineers.",
+      icon: <Smartphone className="w-8 h-8 text-primary" />,
       image: "/noli/SMS notifications.png"
     }
   ];
 
   useEffect(() => {
-    const observers = flowSteps.map((_, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveStep(index);
-          }
-        },
-        { rootMargin: "-40% 0px -40% 0px" } // trigger when element is in middle 20% of screen
-      );
+    let frame = 0;
 
-      if (stepRefs.current[index]) {
-        observer.observe(stepRefs.current[index]!);
-      }
+    // A step stays active until the NEXT step's top crosses the anchor line, so it never
+    // fades while still being read. Measured live, so any viewport / rotation / font size works.
+    const update = () => {
+      frame = 0;
+      // Below lg the image panel is docked over the bottom 32vh; the readable area ends there.
+      const reserved = window.innerWidth < 1024 ? window.innerHeight * 0.32 : 0;
+      const anchor = (window.innerHeight - reserved) / 2;
 
-      return observer;
-    });
+      let next = 0;
+      stepRefs.current.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top <= anchor) next = i;
+      });
+
+      const atBottom =
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 150;
+      setActiveStep(atBottom ? flowSteps.length - 1 : next);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      observers.forEach((observer) => observer.disconnect());
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [lang, flowSteps.length]);
 
   return (
     <>
@@ -124,46 +137,17 @@ export default function NoliProject() {
             <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto">Scroll down to see how NOLI handles complex network intelligence queries and remediations.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-start relative">
-            
-            {/* Left Column: Sticky Image Container — hidden on mobile */}
-            <div className="hidden md:block sticky top-28 lg:top-32 h-[50vh] lg:h-[60vh] glass rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 p-4 lg:p-6 transition-all duration-500 shadow-2xl">
-               {flowSteps.map((step, idx) => (
-                  <div 
-                    key={`img-${idx}`}
-                    className={`absolute inset-4 lg:inset-6 transition-all duration-700 ease-in-out flex flex-col items-center justify-between gap-3 lg:gap-4 ${activeStep === idx ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95'}`}
-                  >
-                     <div 
-                       className="w-full flex-1 flex items-center justify-center overflow-hidden cursor-zoom-in"
-                       onClick={() => setSelectedImage(step.image)}
-                     >
-                       <img 
-                         src={step.image} 
-                         alt={step.title}
-                         className="max-w-full max-h-full object-contain shadow-2xl rounded-xl bg-black/20 transition-transform duration-500 hover:scale-105"
-                       />
-                     </div>
-                     <div className="w-full glass p-3 lg:p-4 rounded-xl text-center backdrop-blur-md border border-white/10 bg-black/60 shadow-lg">
-                       <p className="font-bold text-white text-sm lg:text-lg">{step.title}</p>
-                     </div>
-                  </div>
-               ))}
-            </div>
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-start relative">
 
-            {/* Right Column: Scrolling Text + inline images on mobile */}
-            <div className="flex flex-col gap-12 sm:gap-16 md:gap-32 pb-16 sm:pb-32 pt-4 sm:pt-8 md:pt-32">
+            {/* Scrolling text. Comes first in DOM so the image panel below can sticky-dock to the
+                viewport bottom on mobile/tablet; on lg the grid re-orders the panel back to col 1. */}
+            <div className="flex flex-col gap-12 sm:gap-16 lg:gap-32 pb-8 lg:pb-32 pt-4 sm:pt-8 lg:pt-32">
                {flowSteps.map((step, idx) => (
                  <div 
                    key={`text-${idx}`} 
                    ref={(el) => stepRefs.current[idx] = el}
-                   className={`transition-all duration-700 ease-out md:min-h-[40vh] flex flex-col justify-center ${activeStep === idx ? 'opacity-100 translate-x-0' : 'md:opacity-30 opacity-100 md:translate-x-8'}`}
+                   className={`transition-all duration-700 ease-out min-h-[40vh] md:min-h-[40vh] flex flex-col justify-center ${activeStep === idx ? 'opacity-100 translate-x-0' : 'opacity-30 translate-x-4 md:translate-x-8'}`}
                  >
-                   <div 
-                     className="md:hidden mb-6 glass rounded-2xl p-2 sm:p-3 border border-white/10 shadow-lg cursor-zoom-in"
-                     onClick={() => setSelectedImage(step.image)}
-                   >
-                     <img src={step.image} alt={step.title} className="rounded-xl w-full" />
-                   </div>
                    <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-primary/10 inline-flex rounded-xl sm:rounded-2xl border border-primary/20 shadow-inner">
                      {step.icon}
                    </div>
@@ -175,10 +159,34 @@ export default function NoliProject() {
                ))}
             </div>
 
+            {/* Image panel: docked to the viewport bottom below lg, sticky left column on lg. */}
+            <div className="sticky bottom-4 lg:bottom-auto lg:top-32 lg:order-first z-30 h-[32vh] lg:h-[60vh] w-full glass rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 p-2 lg:p-6 transition-all duration-500 shadow-2xl">
+               {flowSteps.map((step, idx) => (
+                  <div
+                    key={`img-${idx}`}
+                    className={`absolute inset-2 lg:inset-6 transition-all duration-700 ease-in-out flex flex-col items-center justify-between gap-2 lg:gap-4 ${activeStep === idx ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95'}`}
+                  >
+                     <div
+                       className="w-full flex-1 flex items-center justify-center overflow-hidden cursor-zoom-in"
+                       onClick={() => setSelectedImage(step.image)}
+                     >
+                       <img
+                         src={step.image}
+                         alt={step.title}
+                         className="max-w-full max-h-full object-contain shadow-2xl rounded-xl bg-black/20 transition-transform duration-500 hover:scale-105"
+                       />
+                     </div>
+                     <div className="w-full glass p-2 lg:p-4 rounded-xl text-center backdrop-blur-md border border-white/10 bg-black/60 shadow-lg">
+                       <p className="font-bold text-white text-xs sm:text-sm lg:text-lg">{step.title}</p>
+                     </div>
+                  </div>
+               ))}
+            </div>
+
           </div>
         </div>
       </main>
-      
+
       <Footer />
 
       {selectedImage && (

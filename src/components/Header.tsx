@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/contexts/LanguageContext";
 import logoImg from "@/assets/Logo.png";
 
@@ -27,9 +28,9 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[100] glass px-6 py-3 flex items-center justify-between">
-        <a href="#" className="flex items-center" data-interactive>
+        <Link to="/" className="flex items-center" data-interactive>
           <img src={logoImg} alt="RS Logo" className="w-auto theme-logo transition-all duration-500" style={{ height: 48 }} />
-        </a>
+        </Link>
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
@@ -67,9 +68,9 @@ export default function Header() {
       >
         <nav className="flex flex-col gap-8">
           {sections.map((s, i) => (
-            <a
+            <Link
               key={s.href}
-              href={s.href}
+              to={`/${s.href}`}
               onClick={() => setMenuOpen(false)}
               className="group flex items-center gap-6 text-4xl md:text-6xl font-bold text-foreground hover:text-primary transition-colors"
               style={{
@@ -82,7 +83,7 @@ export default function Header() {
             >
               <span className="text-sm font-light text-muted-foreground">0{i + 1}</span>
               {s.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

@@ -20,7 +20,7 @@ export default function ContactSection() {
       <div className="max-w-5xl mx-auto" ref={ref}>
         <h2
           ref={parallaxRef as React.RefObject<HTMLHeadingElement>}
-          className="text-4xl md:text-5xl font-black mb-12 text-foreground transition-all duration-700 ease-out"
+          className="text-4xl md:text-5xl font-black mb-8 text-foreground transition-all duration-700 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: `translateY(calc(var(--parallax-y, 0px) + ${isVisible ? 0 : 20}px))`,
@@ -28,6 +28,22 @@ export default function ContactSection() {
         >
           {t.contact}
         </h2>
+        
+        <div 
+          className="mb-12 transition-all duration-700 ease-out"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transitionDelay: "100ms"
+          }}
+        >
+          <p className="text-2xl md:text-3xl font-bold text-foreground/90 mb-3">
+            {t.buildFuture}
+          </p>
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-primary uppercase">
+            {t.motto}
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {items.map((item, i) => {
             const Wrapper = item.href ? "a" : "div";

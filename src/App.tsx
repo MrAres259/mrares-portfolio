@@ -9,6 +9,7 @@ import InsaightProject from "./pages/InsaightProject";
 import NoliProject from "./pages/NoliProject";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ScrollProgress } from "./components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/project/insaight" element={<InsaightProject />} />

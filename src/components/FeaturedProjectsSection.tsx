@@ -1,7 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
-import { FolderGit2 } from "lucide-react";
+import { Database, RadioTower } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function FeaturedProjectsSection() {
@@ -15,12 +15,14 @@ export default function FeaturedProjectsSection() {
       desc: t.project1Desc,
       tech: ["Huawei Cloud", "MaaS", "DeepSeek-V4-Flash", "SQL", "SMN", "Python"],
       link: "/project/insaight",
+      Icon: Database,
     },
     {
       title: t.project2Title,
       desc: t.project2Desc,
       tech: ["Huawei Cloud", "MaaS", "Elasticsearch", "DeepSeek-V4-Flash", "GLM 5.2", "FastAPI", "Next.js", "Python"],
       link: "/project/noli",
+      Icon: RadioTower,
     },
   ];
 
@@ -38,30 +40,32 @@ export default function FeaturedProjectsSection() {
           {t.projects}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, i) => (
-            <Link
-              key={i}
-              to={project.link}
-              className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative flex flex-col h-full group"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(30px)",
-                transitionDelay: `${(i + 1) * 150}ms`,
-              }}
-              data-interactive
-            >
-              <div className="absolute top-0 left-0 w-full h-1 theme-pour-line" style={{ backgroundSize: "200% 100%" }}></div>
-              <div className="flex justify-between items-start mb-6">
-                <div className="p-3 bg-primary/10 rounded-xl">
-                  <FolderGit2 className="w-8 h-8 text-primary" />
+          {projects.map((project, i) => {
+            const Icon = project.Icon;
+            return (
+              <Link
+                key={i}
+                to={project.link}
+                className="glass glass-hover rounded-2xl p-8 transition-all duration-500 relative flex flex-col h-full group"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "translateY(0)" : "translateY(30px)",
+                  transitionDelay: `${(i + 1) * 150}ms`,
+                }}
+                data-interactive
+              >
+                <div className="absolute top-0 left-0 w-full h-1 theme-pour-line" style={{ backgroundSize: "200% 100%" }}></div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <Icon className="w-8 h-8 text-primary" />
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
-                {project.desc}
-              </p>
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
+                  {project.desc}
+                </p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tech.map((t, idx) => (
                   <span
@@ -73,7 +77,8 @@ export default function FeaturedProjectsSection() {
                 ))}
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
