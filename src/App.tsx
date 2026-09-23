@@ -1,38 +1,25 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import InsaightProject from "./pages/InsaightProject";
-import NoliProject from "./pages/NoliProject";
-import { LanguageProvider } from "./contexts/LanguageContext";
-import { ScrollProgress } from "./components/ScrollProgress";
-import ScrollToTop from "./components/ScrollToTop";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import ScrollToTop from "@/components/ScrollToTop";
+import Index from "@/pages/Index";
+import NotFound from "@/pages/NotFound";
+import ProjectDetail from "@/components/ProjectDetail";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+export default function App() {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <LanguageProvider>
-        <ScrollProgress />
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/project/insaight" element={<InsaightProject />} />
-            <Route path="/project/noli" element={<NoliProject />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/project/insaight" element={<ProjectDetail id="insaight" />} />
+            <Route path="/project/noli" element={<ProjectDetail id="noli" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </LanguageProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+    </ThemeProvider>
+  );
+}

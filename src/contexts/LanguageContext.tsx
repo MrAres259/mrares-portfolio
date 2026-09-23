@@ -1,12 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-import { Lang, translations } from "@/lib/translations";
-
-type TranslationStrings = typeof translations["en"];
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { translations, type Content, type Lang } from "@/lib/content";
 
 type LanguageContextType = {
   lang: Lang;
   toggleLang: () => void;
-  t: TranslationStrings;
+  t: Content;
 };
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -15,6 +13,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
   const toggleLang = () => setLang((l) => (l === "en" ? "es" : "en"));
   const t = translations[lang];
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   return (
     <LanguageContext.Provider value={{ lang, toggleLang, t }}>
       {children}
