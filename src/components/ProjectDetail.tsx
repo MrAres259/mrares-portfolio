@@ -138,7 +138,7 @@ export default function ProjectDetail({ id }: { id: ProjectId }) {
           </div>
         </nav>
 
-        <header className="grid gap-10 pb-16 pt-20 lg:grid-cols-12 lg:items-end">
+        <header className="grid gap-10 pb-16 pt-12 lg:grid-cols-12 lg:items-end lg:pt-14">
           <div className="lg:col-span-8">
             <p className="section-label">{copy.kicker}</p>
             <h1 className="mt-5 max-w-4xl font-display text-5xl font-bold leading-[1.02] sm:text-7xl">

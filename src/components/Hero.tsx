@@ -7,7 +7,7 @@ export default function Hero() {
   const { t } = useLang();
 
   return (
-    <section id="top" className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:grid-cols-12 lg:pb-24 lg:pt-32">
+    <section id="top" className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-12 lg:grid-cols-12 lg:pb-24 lg:pt-14">
       <div className="lg:col-span-8">
         <div className="status-badge"><span className="status-dot" />{t.hero.available}</div>
         <p className="section-label mt-8">{t.hero.eyebrow}</p>
