@@ -9,10 +9,10 @@ export type Content = {
   meta: { title: string; description: string };
   nav: { work: string; experience: string; capabilities: string; credentials: string; contact: string; talk: string; menu: string; switchLang: string; theme: string };
   hero: { available: string; eyebrow: string; headlineStart: string; headlineAccent: string; intro: string; primary: string; secondary: string; profileLabel: string; profileStatus: string; profileNote: string; proof: { value: string; label: string }[] };
-  work: { label: string; title: string; intro: string; badge: string; cta: string };
+  work: { label: string; title: string; intro: string; badge: string; cta: string; more: { label: string; type: string; title: string; description: string; stack: string[] } };
   projects: Record<ProjectId, ProjectCopy>;
   experience: { label: string; title: string; showMore: string; showLess: string; roles: Role[] };
-  capabilities: { label: string; title: string; items: { title: string; desc: string }[] };
+  capabilities: { label: string; title: string; learningTag: string; items: { title: string; desc: string }[] };
   credentials: { label: string; title: string; educationLabel: string; education: Education[]; certsLabel: string; featured: string; certNo: string; validThrough: string; copy: string; copied: string; verify: string };
   contact: { label: string; title: string; body: string; location: string };
   detail: { back: string; stack: string; overview: string; architecture: string; gallery: string; galleryTitle: string; nextStep: string; nextTitle: string; email: string; backHome: string; expand: string };
@@ -23,8 +23,8 @@ export type Content = {
 export const translations: Record<Lang, Content> = {
   en: {
     meta: {
-      title: "Rigel Santos | Cloud, AI & Network Systems",
-      description: "Portfolio of Rigel Santos: applied AI, cloud infrastructure, network operations and full-stack engineering.",
+      title: "Rigel Santos | Cloud AI Engineer",
+      description: "Portfolio of Rigel Santos, Cloud AI Engineer: RAG and Text-to-SQL platforms, real-time data pipelines and serverless automation on Huawei Cloud.",
     },
     nav: {
       work: "Work",
@@ -39,28 +39,35 @@ export const translations: Record<Lang, Content> = {
     },
     hero: {
       available: "Based in Mexico City · Open to opportunities",
-      eyebrow: "Applied AI · Cloud infrastructure · Network operations",
-      headlineStart: "I build resilient systems for",
-      headlineAccent: "real operations.",
-      intro: "I turn complex cloud, data and network problems into systems teams can inspect, trust and operate—from architecture to production.",
+      eyebrow: "Cloud · AI · Automation · Data",
+      headlineStart: "I build cloud AI systems that turn data into",
+      headlineAccent: "action.",
+      intro: "Cloud AI Engineer at Huawei Cloud. I design RAG and Text-to-SQL platforms, real-time data pipelines and serverless automation for enterprise customers, from architecture and proof of concept to production.",
       primary: "View case studies",
       secondary: "Start a conversation",
       profileLabel: "Profile signal",
       profileStatus: "ACTIVE",
-      profileNote: "Technical Account Manager Intern at Huawei Cloud. Telecom, Systems & Electronics Engineering at UNAM.",
+      profileNote: "Technical Account Manager (Intern) at Huawei Cloud for ISP, telecom and ERP customers. Telecom, Systems & Electronics Engineering at UNAM, Aug 2026.",
       proof: [
-        { value: "02", label: "flagship systems" },
-        { value: "04", label: "engineering domains" },
+        { value: "5 min", label: "incident resolution in NOLI PoC (was 45–120)" },
+        { value: "03", label: "enterprise AI platforms" },
+        { value: "HCIP", label: "cloud solutions architect" },
         { value: "EN / ES", label: "bilingual delivery" },
-        { value: "2026", label: "UNAM graduate" },
       ],
     },
     work: {
       label: "Selected work",
-      title: "Engineering under real constraints",
-      intro: "Not concept art. Two working systems designed around business data, security guardrails and operational response.",
+      title: "AI systems for enterprise operations",
+      intro: "Three enterprise platforms built on Huawei Cloud: LLM-driven incident response, Text-to-SQL analytics and RAG knowledge search.",
       badge: "VERIFIED BUILD",
       cta: "Explore system",
+      more: {
+        label: "Also delivered",
+        type: "Enterprise RAG · Knowledge platform",
+        title: "Pangolin Brain",
+        description: "A knowledge-center platform for a tier-1 Mexican mobile carrier, modeled on Huawei Cloud Pangu's knowledge base: document ingestion, chunking and embeddings stored in vector databases, powering semantic search and source-grounded LLM answers.",
+        stack: ["RAG", "Embeddings", "Vector databases", "Semantic search", "Huawei Cloud Pangu"],
+      },
     },
     projects: projectCopy.en,
     experience: {
@@ -73,13 +80,14 @@ export const translations: Record<Lang, Content> = {
           date: "Dec 2025 — Present",
           title: "Technical Account Manager Intern",
           place: "Huawei Cloud · Mexico City",
-          summary: "Cloud architecture, enterprise troubleshooting, multi-cloud adoption, infrastructure automation and security validation across production environments.",
+          summary: "Technical advisor for ISP, telecom and ERP customers: LLM platforms, real-time data pipelines, serverless ETL and secure multi-VPC landing zones, from architecture to production.",
           bullets: [
-            "Designed and deployed custom software and cloud infrastructure solutions tailored to resolve specific business challenges and accelerate enterprise digital transformation.",
-            "Led multi-cloud adoption strategies and end-to-end migrations, utilizing Infrastructure as Code (IaC) to automate the provisioning and deployment of scalable enterprise environments.",
-            "Acted as the primary technical liaison for enterprise clients, executing advanced troubleshooting and root-cause analysis to ensure high availability and resolve complex incidents in production environments.",
-            "Validated security postures across multi-VPC topologies by conducting penetration testing on Web Application Firewalls (WAF) and Cloud Firewalls, ensuring strict policy enforcement and protection against advanced threats.",
-            "Streamlined cloud operations by engineering serverless automation architectures and configuration scripts, significantly reducing manual effort and minimizing deployment times.",
+            "Serve as primary technical advisor for enterprise customers (ISP, telecom, and ERP clients), delivering architecture guidance, capacity planning, cloud migration, troubleshooting, and root-cause analysis for production workloads.",
+            "Led NOLI (NetOps Log Intelligence), an LLM-powered log analytics and incident-response platform for a major Mexican ISP’s Network Operations Center on Huawei Cloud MaaS; reduced incident resolution time from 45–120 minutes to as little as 5 minutes in proof of concept.",
+            "Designed NOLI’s streaming data pipeline (device JSON logs → Datadog → load balancer → Elasticsearch) and the query and aggregation layer behind operator dashboards, service-health views, and auto-generated management reports, validated against the customer’s existing Datadog views for data fidelity.",
+            "Built a monitoring service that evaluates sensors continuously, sends Telegram/SMS alerts on threshold breaches, and uses an LLM to draft correlated remediation plans with human approval enforced before any production change.",
+            "Engineered a serverless ETL pipeline in Python (FunctionGraph, object storage event triggers) forwarding audit logs to Splunk SIEM with least-privilege IAM and built-in diagnostics.",
+            "Architected secure multi-VPC landing zones (hub-and-spoke Enterprise Router, DMZ and inspection VPCs, cross-region private connectivity to AI model endpoints) and automated provisioning with Terraform (Infrastructure as Code).",
           ],
         },
         {
@@ -109,23 +117,24 @@ export const translations: Record<Lang, Content> = {
     },
     capabilities: {
       label: "Capability architecture",
-      title: "One operator across the stack",
+      title: "Cloud, AI, automation and data",
+      learningTag: "in progress",
       items: [
         {
           title: "Cloud & infrastructure",
-          desc: "Huawei Cloud, Google Cloud, Terraform, containers, Kubernetes and serverless systems.",
+          desc: "Landing zones, VPC networking, containers and infrastructure as code on Huawei Cloud, with Google Cloud and OCI foundations.",
         },
         {
-          title: "Applied AI & data",
-          desc: "LLM integration, retrieval pipelines, Elasticsearch, PostgreSQL, GaussDB and evaluation workflows.",
+          title: "AI & LLM systems",
+          desc: "RAG pipelines, vector search, Text-to-SQL and agentic workflows grounded in enterprise data.",
         },
         {
-          title: "Security & networking",
-          desc: "WAF testing, cloud firewalls, enterprise routing, observability and incident analysis.",
+          title: "Automation",
+          desc: "Serverless functions, event-driven ETL and configuration automation that remove manual steps from operations.",
         },
         {
-          title: "Full-stack delivery",
-          desc: "Python, TypeScript, SQL, APIs and interfaces that expose complex system state clearly.",
+          title: "Data & analytics",
+          desc: "Pipelines, query layers and dashboards in Python, SQL and Elasticsearch. Expanding into big data engineering next.",
         },
       ],
     },
@@ -138,7 +147,7 @@ export const translations: Record<Lang, Content> = {
           date: "2020 - 2026",
           title: "Telecom, Systems & Electronics Engineering",
           place: "Universidad Nacional Autónoma de México",
-          desc: "Specialized in Telecommunications, Coding, and Networking.",
+          desc: "Relevant coursework: Artificial Intelligence & Machine Learning, Cloud Computing, Serverless & Automation, Relational Databases, Data Communication & Networking.",
         },
         {
           date: "2017 - 2019",
@@ -158,7 +167,7 @@ export const translations: Record<Lang, Content> = {
     contact: {
       label: "Direct contact",
       title: "Have a complex system to untangle?",
-      body: "I’m interested in cloud, AI infrastructure, network operations and technical roles where reliability matters.",
+      body: "I'm open to Cloud AI, automation and data engineering roles where reliability matters.",
       location: "Mexico City, Mexico",
     },
     detail: {
@@ -185,8 +194,8 @@ export const translations: Record<Lang, Content> = {
   },
   es: {
     meta: {
-      title: "Rigel Santos | Cloud, IA y Sistemas de Red",
-      description: "Portafolio de Rigel Santos: IA aplicada, infraestructura cloud, operaciones de red e ingeniería full-stack.",
+      title: "Rigel Santos | Ingeniero de IA en la Nube",
+      description: "Portafolio de Rigel Santos, ingeniero de IA en la nube: plataformas RAG y Text-to-SQL, pipelines de datos en tiempo real y automatización serverless en Huawei Cloud.",
     },
     nav: {
       work: "Proyectos",
@@ -201,28 +210,35 @@ export const translations: Record<Lang, Content> = {
     },
     hero: {
       available: "Ciudad de México · Abierto a oportunidades",
-      eyebrow: "IA aplicada · Infraestructura cloud · Operaciones de red",
-      headlineStart: "Construyo sistemas resilientes para",
-      headlineAccent: "operaciones reales.",
-      intro: "Convierto problemas complejos de nube, datos y redes en sistemas que los equipos pueden inspeccionar, confiar y operar: desde arquitectura hasta producción.",
+      eyebrow: "Nube · IA · Automatización · Datos",
+      headlineStart: "Construyo sistemas de IA en la nube que convierten datos en",
+      headlineAccent: "acción.",
+      intro: "Ingeniero de IA en la nube en Huawei Cloud. Diseño plataformas RAG y Text-to-SQL, pipelines de datos en tiempo real y automatización serverless para clientes empresariales, desde la arquitectura y la prueba de concepto hasta producción.",
       primary: "Ver casos de estudio",
       secondary: "Iniciar conversación",
       profileLabel: "Señal de perfil",
       profileStatus: "ACTIVO",
-      profileNote: "Pasante de Technical Account Manager en Huawei Cloud. Ingeniería en Telecomunicaciones, Sistemas y Electrónica en la UNAM.",
+      profileNote: "Technical Account Manager (pasante) en Huawei Cloud para clientes ISP, telecom y ERP. Ingeniería en Telecomunicaciones, Sistemas y Electrónica en la UNAM, agosto 2026.",
       proof: [
-        { value: "02", label: "sistemas principales" },
-        { value: "04", label: "áreas de ingeniería" },
+        { value: "5 min", label: "resolución de incidentes en PoC de NOLI (antes 45–120)" },
+        { value: "03", label: "plataformas de IA empresariales" },
+        { value: "HCIP", label: "arquitecto de soluciones cloud" },
         { value: "EN / ES", label: "trabajo bilingüe" },
-        { value: "2026", label: "egresado UNAM" },
       ],
     },
     work: {
       label: "Trabajo seleccionado",
-      title: "Ingeniería bajo restricciones reales",
-      intro: "No son conceptos. Son dos sistemas funcionales diseñados alrededor de datos, seguridad y respuesta operativa.",
+      title: "Sistemas de IA para operaciones empresariales",
+      intro: "Tres plataformas empresariales sobre Huawei Cloud: respuesta a incidentes con LLM, analítica Text-to-SQL y búsqueda de conocimiento con RAG.",
       badge: "SISTEMA VERIFICADO",
       cta: "Explorar sistema",
+      more: {
+        label: "También entregado",
+        type: "RAG empresarial · Plataforma de conocimiento",
+        title: "Pangolin Brain",
+        description: "Una plataforma de centro de conocimiento para un operador móvil mexicano de primer nivel, basada en la base de conocimiento de Huawei Cloud Pangu: ingesta de documentos, fragmentación y embeddings en bases de datos vectoriales para búsqueda semántica y respuestas de LLM fundamentadas en fuentes.",
+        stack: ["RAG", "Embeddings", "Vector databases", "Semantic search", "Huawei Cloud Pangu"],
+      },
     },
     projects: projectCopy.es,
     experience: {
@@ -235,13 +251,14 @@ export const translations: Record<Lang, Content> = {
           date: "Dic 2025 — Presente",
           title: "Pasante de Technical Account Manager",
           place: "Huawei Cloud · Ciudad de México",
-          summary: "Arquitectura cloud, diagnóstico empresarial, adopción multi-cloud, automatización de infraestructura y validación de seguridad en producción.",
+          summary: "Asesor técnico para clientes ISP, telecom y ERP: plataformas con LLM, pipelines de datos en tiempo real, ETL serverless y landing zones multi-VPC seguras, desde la arquitectura hasta producción.",
           bullets: [
-            "Diseñé e implementé software a medida y soluciones de infraestructura en la nube adaptadas para resolver desafíos comerciales específicos y acelerar la transformación digital empresarial.",
-            "Lideré estrategias de adopción de múltiples nubes y migraciones de extremo a extremo, utilizando Infraestructura como Código (IaC) para automatizar el aprovisionamiento y despliegue de entornos empresariales escalables.",
-            "Actué como enlace técnico principal para clientes empresariales, ejecutando solución de problemas avanzada y análisis de causa raíz para garantizar alta disponibilidad y resolver incidentes complejos en entornos de producción.",
-            "Validé posturas de seguridad a través de topologías multi-VPC realizando pruebas de penetración en Firewalls de Aplicaciones Web (WAF) y Firewalls en la Nube, garantizando el cumplimiento estricto de políticas y protección contra amenazas avanzadas.",
-            "Optimicé las operaciones en la nube diseñando arquitecturas de automatización sin servidor y scripts de configuración, reduciendo significativamente el esfuerzo manual y minimizando los tiempos de despliegue.",
+            "Asesor técnico principal de clientes empresariales (ISP, telecom y ERP): guía de arquitectura, planeación de capacidad, migración a la nube, resolución de problemas y análisis de causa raíz de cargas productivas.",
+            "Lideré NOLI (NetOps Log Intelligence), una plataforma de analítica de logs y respuesta a incidentes con LLM para el Centro de Operaciones de Red de un importante ISP mexicano sobre Huawei Cloud MaaS; reduje el tiempo de resolución de incidentes de 45–120 minutos a solo 5 minutos en la prueba de concepto.",
+            "Diseñé el pipeline de datos en streaming de NOLI (logs JSON de equipos → Datadog → balanceador de carga → Elasticsearch) y la capa de consultas y agregaciones detrás de los dashboards de operadores, las vistas de salud del servicio y los reportes gerenciales automáticos, validados contra las vistas de Datadog del cliente para asegurar la fidelidad de los datos.",
+            "Construí un servicio de monitoreo que evalúa sensores de forma continua, envía alertas por Telegram/SMS al superar umbrales y usa un LLM para redactar planes de remediación correlacionados, con aprobación humana obligatoria antes de cualquier cambio en producción.",
+            "Desarrollé un pipeline ETL serverless en Python (FunctionGraph, disparadores por eventos de object storage) que envía logs de auditoría a Splunk SIEM con IAM de mínimo privilegio y diagnósticos integrados.",
+            "Diseñé landing zones multi-VPC seguras (Enterprise Router hub-and-spoke, VPCs de DMZ e inspección, conectividad privada entre regiones hacia endpoints de modelos de IA) y automaticé el aprovisionamiento con Terraform (Infraestructura como Código).",
           ],
         },
         {
@@ -271,23 +288,24 @@ export const translations: Record<Lang, Content> = {
     },
     capabilities: {
       label: "Arquitectura de capacidades",
-      title: "Un operador para toda la pila",
+      title: "Nube, IA, automatización y datos",
+      learningTag: "en curso",
       items: [
         {
-          title: "Cloud e infraestructura",
-          desc: "Huawei Cloud, Google Cloud, Terraform, contenedores, Kubernetes y sistemas serverless.",
+          title: "Nube e infraestructura",
+          desc: "Landing zones, redes VPC, contenedores e infraestructura como código en Huawei Cloud, con bases en Google Cloud y OCI.",
         },
         {
-          title: "IA aplicada y datos",
-          desc: "Integración LLM, recuperación, Elasticsearch, PostgreSQL, GaussDB y flujos de evaluación.",
+          title: "IA y sistemas con LLM",
+          desc: "Pipelines RAG, búsqueda vectorial, Text-to-SQL y flujos agénticos fundamentados en datos empresariales.",
         },
         {
-          title: "Seguridad y redes",
-          desc: "Pruebas WAF, firewalls cloud, ruteo empresarial, observabilidad y análisis de incidentes.",
+          title: "Automatización",
+          desc: "Funciones serverless, ETL orientado a eventos y automatización de configuración que eliminan pasos manuales de la operación.",
         },
         {
-          title: "Desarrollo full-stack",
-          desc: "Python, TypeScript, SQL, APIs e interfaces que exponen sistemas complejos con claridad.",
+          title: "Datos y analítica",
+          desc: "Pipelines, capas de consulta y dashboards en Python, SQL y Elasticsearch. Próximo paso: ingeniería de big data.",
         },
       ],
     },
@@ -300,7 +318,7 @@ export const translations: Record<Lang, Content> = {
           date: "2020 - 2026",
           title: "Ingeniería en Telecomunicaciones, Sistemas y Electrónica",
           place: "Universidad Nacional Autónoma de México",
-          desc: "Especializado en Telecomunicaciones, Programación y Redes.",
+          desc: "Materias relevantes: Inteligencia Artificial y Machine Learning, Cómputo en la Nube, Serverless y Automatización, Bases de Datos Relacionales, Comunicación de Datos y Redes.",
         },
         {
           date: "2017 - 2019",
@@ -320,7 +338,7 @@ export const translations: Record<Lang, Content> = {
     contact: {
       label: "Contacto directo",
       title: "¿Tienes un sistema complejo por resolver?",
-      body: "Me interesan oportunidades en cloud, infraestructura de IA y operaciones de red donde la confiabilidad importe.",
+      body: "Busco roles de IA en la nube, automatización e ingeniería de datos donde la confiabilidad importe.",
       location: "Ciudad de México, México",
     },
     detail: {

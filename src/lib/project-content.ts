@@ -15,13 +15,13 @@ export type ProjectCopy = {
 export const projectCopy: Record<Lang, Record<ProjectId, ProjectCopy>> = {
   en: {
     insaight: {
-      type: "Business intelligence · AI",
+      type: "Business intelligence · Text-to-SQL",
       title: "InsAIght 1.2",
       description:
-        "A natural-language interface for querying business databases, with semantic routing, SQL validation, read-only guardrails and generated visual explanations.",
-      outcome: "From question to validated SQL and decision-ready output",
+        "A full-stack BI platform that turns natural-language questions into SQL across three business databases and answers with narrative insights and dynamic charts, using LLMs on Huawei Cloud.",
+      outcome: "Schema-aware RAG + Text-to-SQL, with every query validated before it runs",
       kicker: "Business intelligence assistant",
-      summary: "A secure natural-language layer between people and business databases.",
+      summary: "A schema-aware Text-to-SQL layer between people and three business databases.",
       overview:
         "InsAIght 1.2 is a Business Intelligence (BI) Chatbot/Assistant designed to let users query databases using natural language. It acts as an intelligent intermediary between users and different business databases (home, mobile, and enterprise), translating conversational questions into SQL queries, executing them, and returning natural language explanations along with data visualizations.",
       chapters: [
@@ -60,13 +60,13 @@ export const projectCopy: Record<Lang, Record<ProjectId, ProjectCopy>> = {
       ],
     },
     noli: {
-      type: "Telecom · Network operations",
+      type: "Telecom NOC · LLM log analytics",
       title: "NetOps Log Intelligence (NOLI)",
       description:
-        "An AI-assisted NOC workflow that turns questions into Elasticsearch queries, identifies cascading failures, and supports monitored remediation and escalation.",
-      outcome: "Datadog migration, live monitoring and assisted incident response",
+        "An LLM-powered log analytics and incident-response platform for a major Mexican ISP's NOC, fed by a streaming pipeline from device logs to Elasticsearch.",
+      outcome: "Incident resolution cut from 45–120 minutes to as little as 5 in proof of concept",
       kicker: "AI-assisted network operations",
-      summary: "A NOC workflow for querying, diagnosing and remediating live telecom incidents.",
+      summary: "An LLM-powered NOC platform that cut incident resolution from 45–120 minutes to as little as 5 in proof of concept.",
       overview:
         "In this use case for a leading Telecom provider, NOLI (NetOps Log Intelligence) was developed to streamline their Network Operations Center (NOC). The client needed to migrate monitoring from Datadog to an Elasticsearch cluster while minimizing incident resolution times. NOLI acts as an AI-powered NOC assistant, leveraging Huawei Cloud CSS for data storage and DeepSeek-V4-Flash and GLM 5.2 via MAAS to process natural language questions into complex Elasticsearch queries, generate root-cause analyses, and trigger automated remediation scripts in real-time.",
       chapters: [
@@ -122,13 +122,13 @@ export const projectCopy: Record<Lang, Record<ProjectId, ProjectCopy>> = {
   },
   es: {
     insaight: {
-      type: "Inteligencia de negocio · IA",
+      type: "Inteligencia de negocio · Text-to-SQL",
       title: "InsAIght 1.2",
       description:
-        "Una interfaz de lenguaje natural para consultar bases empresariales con enrutamiento semántico, validación SQL, controles de solo lectura y explicaciones visuales.",
-      outcome: "De una pregunta a SQL validado y resultados listos para decidir",
+        "Una plataforma de BI full-stack que convierte preguntas en lenguaje natural en SQL sobre tres bases de datos de negocio y responde con análisis narrativos y gráficas dinámicas, usando LLMs en Huawei Cloud.",
+      outcome: "RAG + Text-to-SQL con conocimiento del esquema; cada consulta se valida antes de ejecutarse",
       kicker: "Asistente de inteligencia de negocio",
-      summary: "Una capa segura de lenguaje natural entre las personas y las bases de datos del negocio.",
+      summary: "Una capa Text-to-SQL con conocimiento del esquema entre las personas y tres bases de datos de negocio.",
       overview:
         "InsAIght 1.2 es un Chatbot/Asistente de Inteligencia Empresarial (BI) diseñado para permitir a los usuarios consultar bases de datos usando lenguaje natural. Actúa como un intermediario inteligente entre los usuarios y diferentes bases de datos (hogar, móvil y empresarial), traduciendo preguntas conversacionales a consultas SQL, ejecutándolas y devolviendo explicaciones junto con visualizaciones de datos.",
       chapters: [
@@ -167,13 +167,13 @@ export const projectCopy: Record<Lang, Record<ProjectId, ProjectCopy>> = {
       ],
     },
     noli: {
-      type: "Telecom · Operaciones de red",
+      type: "NOC de telecom · Analítica de logs con LLM",
       title: "NetOps Log Intelligence (NOLI)",
       description:
-        "Un flujo NOC asistido por IA que convierte preguntas en consultas Elasticsearch, identifica fallas en cascada y apoya remediación y escalamiento monitoreados.",
-      outcome: "Migración desde Datadog, monitoreo en vivo y respuesta asistida",
+        "Una plataforma de analítica de logs y respuesta a incidentes con LLM para el NOC de un importante ISP mexicano, alimentada por un pipeline en streaming desde los logs de los equipos hasta Elasticsearch.",
+      outcome: "Resolución de incidentes reducida de 45–120 minutos a solo 5 en la prueba de concepto",
       kicker: "Operaciones de red asistidas por IA",
-      summary: "Un flujo NOC para consultar, diagnosticar y remediar incidentes de telecomunicaciones en vivo.",
+      summary: "Una plataforma NOC con LLM que redujo la resolución de incidentes de 45–120 minutos a solo 5 en la prueba de concepto.",
       overview:
         "En este caso de uso para un importante proveedor de telecomunicaciones, se desarrolló NOLI (NetOps Log Intelligence) para optimizar su Centro de Operaciones de Red (NOC). El cliente necesitaba migrar el monitoreo de Datadog a un clúster de Elasticsearch y minimizar los tiempos de resolución de incidentes. NOLI actúa como un asistente NOC con IA, aprovechando Huawei Cloud CSS para el almacenamiento y DeepSeek-V4-Flash y GLM 5.2 vía MAAS para procesar preguntas en lenguaje natural en consultas complejas, generar análisis de causa raíz y activar scripts de remediación automatizada en tiempo real.",
       chapters: [

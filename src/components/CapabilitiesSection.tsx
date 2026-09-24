@@ -1,11 +1,11 @@
-import { Cloud, BrainCircuit, ShieldCheck, Braces } from "lucide-react";
+import { Cloud, BrainCircuit, Workflow, Database } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 import { skillGroups } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
 
 export default function CapabilitiesSection() {
   const { t } = useLang();
-  const icons = [Cloud, BrainCircuit, ShieldCheck, Braces];
+  const icons = [Cloud, BrainCircuit, Workflow, Database];
 
   return (
     <section id="capabilities" className="relative z-10 mx-auto grid max-w-6xl scroll-mt-24 gap-12 px-5 py-20 sm:px-8 lg:grid-cols-12">
@@ -28,10 +28,11 @@ export default function CapabilitiesSection() {
                     className={cn(
                       "tech-chip",
                       level === "advanced" && "border-primary/40 text-primary",
-                      level === "foundational" && "opacity-60"
+                      level === "foundational" && "opacity-60",
+                      level === "learning" && "border-dashed text-primary"
                     )}
                   >
-                    {name}{level === "advanced" && " ★"}
+                    {name}{level === "advanced" && " ★"}{level === "learning" && ` · ${t.capabilities.learningTag}`}
                   </span>
                 ))}
               </div>

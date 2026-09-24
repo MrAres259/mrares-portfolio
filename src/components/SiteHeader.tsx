@@ -29,7 +29,7 @@ export default function SiteHeader() {
               {person.name}
             </span>
             <span className="block text-[10px] text-muted-foreground">
-              CLOUD · AI · NETWORK SYSTEMS
+              CLOUD · AI · AUTOMATION · DATA
             </span>
           </span>
         </a>

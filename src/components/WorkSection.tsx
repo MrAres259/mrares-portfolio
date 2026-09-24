@@ -59,6 +59,16 @@ export default function WorkSection() {
           );
         })}
       </div>
+      <article className="glass mt-6 grid gap-6 rounded-3xl p-6 md:grid-cols-12 md:items-center">
+        <div className="md:col-span-8">
+          <p className="section-label">{t.work.more.label} · {t.work.more.type}</p>
+          <h3 className="mt-3 font-display text-2xl font-semibold">{t.work.more.title}</h3>
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">{t.work.more.description}</p>
+        </div>
+        <div className="flex flex-wrap gap-2 md:col-span-4 md:justify-end">
+          {t.work.more.stack.map((item) => <span key={item} className="tech-chip">{item}</span>)}
+        </div>
+      </article>
     </section>
   );
 }

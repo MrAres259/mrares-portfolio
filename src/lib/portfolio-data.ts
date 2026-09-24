@@ -7,7 +7,7 @@ import gitGithub from "@/assets/git_github.png";
 
 export type Lang = "en" | "es";
 export type ProjectId = "insaight" | "noli";
-export type SkillLevel = "advanced" | "core" | "foundational";
+export type SkillLevel = "advanced" | "core" | "foundational" | "learning";
 export type Certification = {
   title: string;
   issuer: string;
@@ -44,34 +44,48 @@ export const skillGroups: { name: string; level: SkillLevel }[][] = [
   [
     { name: "Huawei Cloud", level: "advanced" },
     { name: "Google Cloud", level: "foundational" },
+    { name: "Oracle Cloud (OCI)", level: "core" },
     { name: "Terraform", level: "core" },
-    { name: "Docker & K8s", level: "core" },
+    { name: "VPC landing zones", level: "core" },
+    { name: "Docker & Kubernetes", level: "core" },
+    { name: "WAF & Cloud Firewall", level: "core" },
+  ],
+  [
+    { name: "LLM integration", level: "core" },
+    { name: "RAG", level: "core" },
+    { name: "Vector databases", level: "core" },
+    { name: "Embeddings & semantic search", level: "core" },
+    { name: "Text-to-SQL", level: "core" },
+    { name: "Prompt engineering", level: "core" },
+    { name: "Agentic AI workflows", level: "core" },
+    { name: "Huawei Cloud MaaS / Pangu", level: "core" },
+  ],
+  [
     { name: "Serverless (FaaS)", level: "core" },
-  ],
-  [
-    { name: "AI/LLM Integration", level: "core" },
-    { name: "Agent Swarming", level: "core" },
-    { name: "RAG Pipelines", level: "core" },
-    { name: "Elasticsearch", level: "core" },
-    { name: "PostgreSQL", level: "core" },
-    { name: "GaussDB", level: "core" },
-  ],
-  [
-    { name: "WAF Pen Testing", level: "core" },
-    { name: "Cloud Firewall", level: "core" },
-    { name: "Enterprise Routing", level: "core" },
+    { name: "FunctionGraph", level: "core" },
+    { name: "Event-driven ETL", level: "core" },
+    { name: "Ansible", level: "core" },
+    { name: "Python automation", level: "core" },
+    { name: "Agent swarming", level: "core" },
   ],
   [
     { name: "Python", level: "core" },
-    { name: "TypeScript", level: "core" },
     { name: "SQL", level: "core" },
-    { name: "API Integration", level: "core" },
+    { name: "TypeScript", level: "core" },
+    { name: "PostgreSQL", level: "core" },
+    { name: "GaussDB", level: "core" },
+    { name: "Elasticsearch / Kibana", level: "core" },
+    { name: "ETL pipelines", level: "core" },
+    { name: "Dashboards", level: "core" },
+    { name: "Datadog", level: "core" },
+    { name: "Splunk", level: "core" },
+    { name: "Big Data", level: "learning" },
   ],
 ];
 
 export const certifications: Certification[] = [
   {
-    title: "HCIP-Cloud Service Solutions Architect",
+    title: "HCIP-Cloud Service Solutions Architect V3.5",
     issuer: "Huawei",
     date: "2026",
     image: hcipCs,
